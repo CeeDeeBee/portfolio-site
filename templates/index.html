@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Colin's Portfolio Site</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+	</head>
+	<body>
+		<span id='-Len'> ___</span>
+		<div id='headerTitle'>
+			<pre>
+
+
+     /$$$$$$  /$$$$$$$                                                       
+    /$$__  $$| $$__  $$                                                      
+   | $$  \__/| $$  \ $$  /$$$$$$   /$$$$$$  /$$$$$$$       /$$$$$$   /$$$$$$$
+   | $$      | $$$$$$$  |____  $$ /$$__  $$| $$__  $$     /$$__  $$ /$$_____/
+   | $$      | $$__  $$  /$$$$$$$| $$  \__/| $$  \ $$    | $$$$$$$$|  $$$$$$ 
+   | $$    $$| $$  \ $$ /$$__  $$| $$      | $$  | $$    | $$_____/ \____  $$
+   |  $$$$$$/| $$$$$$$/|  $$$$$$$| $$      | $$  | $$ /$$|  $$$$$$$ /$$$$$$$/
+    \______/ |_______/  \_______/|__/      |__/  |__/|__/ \_______/|_______/ 
+														 															 															 
+			</pre>
+			cbarn.es
+		</div>
+		<div id='headerDelim'></div>
+		<canvas id="canvas"></canvas>
+		<div id='pointerWidth' visibility='hidden'></div>
+		<!--<img id='headshot' src='headShot.png'>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+	</body>
+</html>

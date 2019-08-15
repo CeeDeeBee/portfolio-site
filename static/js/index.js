@@ -17,7 +17,7 @@ $(document).ready(function() {
 		if (e.keyCode == 8) {
 			if (cursorX > 122) {
 				//draw background color over area to write letter
-				ctx.fillStyle = '#2e3033';
+				ctx.fillStyle = '#282828';
 				ctx.fillRect(cursorX, cursorY, 100, 15);
 				//update cursor location
 				if (cursorX - keyWidth < 122) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 				ctx.drawImage(document.getElementById('headshot'), 100, 100);
 			}
 			//draw background color over area to write letter
-			ctx.fillStyle = '#2e3033';
+			ctx.fillStyle = '##282828';
 			ctx.fillRect(cursorX, cursorY, 10, 15);
 			//update cursor and pointer locations
 			pointerY += 20;
@@ -43,11 +43,11 @@ $(document).ready(function() {
 			//get width of entered key
 			keyWidth = ctx.measureText(e.key).width;
 			//draw background color over area to write letter
-			ctx.fillStyle = '#2e3033';
+			ctx.fillStyle = '#282828';
 			ctx.fillRect(cursorX, cursorY, 10, 15);
 			//draw letter
-			ctx.font = '15px Trebuchet MS';
-			ctx.fillStyle = '#50ff00';
+			ctx.font = '12px IBMPC';
+			ctx.fillStyle = '#33ff33';
 			ctx.fillText(e.key, cursorX, cursorY + 12);
 			//update cursor location
 			cursorX += keyWidth;
@@ -58,11 +58,11 @@ $(document).ready(function() {
 	function drawCursor() {
 		//draw cursor
 		if (frame % 2 == 0) {
-			ctx.fillStyle = '#50ff00';
+			ctx.fillStyle = '#33ff33';
 			ctx.fillRect(cursorX, cursorY, 10, 15);
 			frame = 1;
 		} else {
-			ctx.fillStyle = '#2e3033';
+			ctx.fillStyle = '#282828';
 			ctx.fillRect(cursorX, cursorY, 10, 15);
 			frame += 1;
 		}
@@ -74,13 +74,13 @@ $(document).ready(function() {
 
 	function drawPointer() {
 		//draw file pointer
-		ctx.font = '15px Trebuchet MS';
-		ctx.fillStyle = '#50ff00';
+		ctx.font = '12px IBMPC';
+		ctx.fillStyle = '#33ff33';
 		ctx.fillText('cbarn.es/index$', 25, pointerY);
 	}
 
 	function setBackground() {
-		ctx.fillStyle = '#2e3033';
+		ctx.fillStyle = '#282828';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 	}
 
