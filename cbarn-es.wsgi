@@ -1,0 +1,1 @@
+from flask-framework import app as application
