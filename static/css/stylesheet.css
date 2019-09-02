@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'IBMVGA9';
+  font-family: 'IBMPC';
   src: url('fonts/px437_ibm_vga9-webfont.woff2') format('woff2'),
        url('fonts/px437_ibm_vga9-webfont.woff') format('woff'),
        url('fonts/px437_ibm_vga9-webfont.ttf') format('truetype');
@@ -31,5 +31,5 @@ html, body {
   text-align: center;
 }
 * {
-  font-family: 'IBMVGA9', Arial, sans-serif;
+  font-family: 'IBMPC', Arial, sans-serif;
 }
