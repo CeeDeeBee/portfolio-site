@@ -28,9 +28,51 @@ var cbarnesOsStr = `
                                                                                                    |  $$$$$$/|  $$$$$$/
                                                                                                     \\______/  \\______/ 
                    `
+var booted = false;
 //On DOM load
 $(document).ready(function() {
-    bootSequence();
+	cursorInterval = bootSequence();
+	const commands = {
+        'reboot': function() {
+            booted = false;
+            $(document.body).append($('#cursor'));
+            clearInterval(cursorInterval);
+            $('.pointerDiv').remove();
+            $('#bootText').css('display', 'block');
+            $('#cbarnesOsStr').css('display', 'block');
+            cursorInterval = bootSequence();
+        },
+        'help': function() {
+            $('.pointerDiv').last().after($('<div></div>').addClass('helpDiv'));
+            for (let [key, value] of Object.entries(descriptions)) {
+                $('.helpDiv').append(key + ' - ' + value + '\n');
+            }
+        }
+    };
+    const descriptions = {
+        'reboot': 'Reboots the OS',
+        'help': 'Prints this dialogue'
+    }
+	//Look for keypresses
+	$(document).on('keydown', function(e) {
+		if (booted) {
+            console.log(e.keyCode);
+			if (e.keyCode == 8) {
+				//Delete last charcter if backspace is pushed
+				$('.currentInput').html($('.currentInput').html().slice(0, -1));
+			} else if (e.keyCode == 13) {
+                //If enter is pushed
+                var command = $('.currentInput').html().toLowerCase();
+				if (commands.hasOwnProperty(command)) {
+					//If a command is entered
+					commands[command]();
+				}
+				newLine();
+			} else if (e.keyCode != 16) {
+				$('.currentInput').append(e.key);
+			}
+		}
+	});
     /*
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");    
@@ -90,72 +132,6 @@ $(document).ready(function() {
             }
         }
     });
-
-    function eraseCursor() {
-        ctx.fillStyle = '#282828';
-        ctx.fillRect(cursorX - 1, cursorY - 1, 12, 17);
-    }
-
-    function animateCursor() {
-        //draw cursor
-        if (frame % 2 == 0) {
-            ctx.fillStyle = '#33ff33';
-            ctx.fillRect(cursorX, cursorY, 10, 15);
-            frame += 1;
-        } else {
-            eraseCursor();
-            frame += 1;
-        }
-
-        setTimeout(function() {
-            requestAnimationFrame(animateCursor);
-        }, 350);
-    }
-
-    function drawPointer() {
-        //draw file pointer
-        ctx.font = '12px IBMPC';
-        ctx.fillStyle = '#33ff33';
-        ctx.fillText('cbarn.es/index$', 25, pointerY);
-    }
-
-    function setBackground() {
-        ctx.fillStyle = '#282828';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-    */
-    /**
-     * Function to allow program to pause for specified time
-     
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    */
-    /**
-     * Boot sequence that runs when user first open page or runs reboot
-     
-    async function bootSequence() {
-        ctx.font = '12px IBMPC';
-        ctx.fillStyle = '#33ff33';
-        ctx.fillText('Booting cbarn.es...', canvas.width * 0.02, canvas.height * 0.02);
-        cursorX = canvas.width * 0.02;
-        cursorY = canvas.width * 0.03;
-        animateCursor();
-        await sleep(2500);
-        eraseCursor();
-        cursorY = canvas.width * 0.04;
-        ctx.fillStyle = '#33ff33';
-        ctx.fillText('The cbarn.es OS', canvas.width * 0.02, canvas.height * 0.05)
-        finishedBoot = true;
-    }
-
-    function initCanvas() {
-        ctx.canvas.width = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
-        //setBackground();
-        bootSequence();
-        drawPointer();
-    }
     */
 });
 
@@ -171,7 +147,7 @@ function sleep(ms) {
  */
 function cursor() {
     var cursorDisplayed = false;
-    setInterval(function() {
+    var cursorInterval = setInterval(function() {
         if (cursorDisplayed) {
             $('#cursor').empty();
             cursorDisplayed = false;
@@ -180,24 +156,52 @@ function cursor() {
             cursorDisplayed = true;
         }
     }, 350);
+
+    return cursorInterval;
 }
 
 /**
  * Static boot sequence that runs when page opens
  */
 async function bootSequence() {
-    var bootTextStr = 'Booting cbarn.es...';
-    for (let chr in bootTextStr) {
-        var currentText = $('#bootText').html();
-        $('#bootText').html(currentText + bootTextStr[chr]);
-        await sleep(0.25);
-    }
-	cursor();
-	await sleep(2000);
-	$('#bootText').empty().css('display', 'none');
+	//Print ASCII art
     for (let chr in cbarnesOsStr) {
-        var currentText = $('#cbarnesOsStr').html();
-        $('#cbarnesOsStr').html(currentText + cbarnesOsStr[chr]);
-        await sleep(0.25);
+		$('#cbarnesOsStr').append(cbarnesOsStr[chr]);
+		//await sleep(0.25);
+	}
+	//Print booting notification
+    const bootTextStr = 'Booting cbarn.es...';
+    for (let chr in bootTextStr) {
+		$('#bootText').append(bootTextStr[chr]);
+		await sleep(0.25);
     }
+	cursorInterval = cursor();
+    //await sleep(3000);
+    //Clear boot screen
+	$('#bootText').empty().css('display', 'none');
+    $('#cbarnesOsStr').empty().css('display', 'none');
+    //Setup terminal interface
+    $('#bootText').after($('<div></div>').addClass('pointerDiv'));
+    $('.pointerDiv').append($('<div></div>').html('A>').addClass('pointer currentPointer'));
+	$('.pointerDiv').append($('<div></div>').addClass('input currentInput'));
+    $('.currentPointer').html('A>')
+    $('.pointerDiv').append($('#cursor'));
+    booted = true;
+    
+    return cursorInterval;
+}
+/**
+ * Makes new line in terminal
+ */
+function newLine() {
+	//Make new pointer div
+	$('.pointerDiv').last().after($('<div></div>').addClass('pointerDiv'));
+	//Remove current classes from old pointer and input
+	$('.currentPointer').removeClass('currentPointer');
+	$('.currentInput').removeClass('currentInput');
+	//Create new pointer and input divs
+	$('.pointerDiv').last().append($('<div></div>').html('A>').addClass('pointer currentPointer'));
+	$('.pointerDiv').last().append($('<div></div>').addClass('input currentInput'));
+	//Move cursor into new line div
+	$('.pointerDiv').last().append($('#cursor'));
 }
