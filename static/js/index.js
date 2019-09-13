@@ -1,4 +1,4 @@
-var cbarnesOsStr = `
+const cbarnesOsStr = `
  /$$$$$$$$ /$$                
 |__  $$__/| $$                
    | $$   | $$$$$$$   /$$$$$$ 
@@ -28,35 +28,40 @@ var cbarnesOsStr = `
                                                                                                    |  $$$$$$/|  $$$$$$/
                                                                                                     \\______/  \\______/ 
                    `
+const descriptions = `Commands:
+Reboot - Reboots the OS
+Help - Prints this dialogue
+Boring - Go back to the boring site`
 var booted = false;
 //On DOM load
 $(document).ready(function() {
+    $('body').click(function () { $('body').focus(); });
 	cursorInterval = bootSequence();
 	const commands = {
         'reboot': function() {
             booted = false;
-            $(document.body).append($('#cursor'));
+            $(document.body).append($('#cursor').empty());
             clearInterval(cursorInterval);
-            $('.pointerDiv').remove();
+            $('.line').remove();
             $('#bootText').css('display', 'block');
             $('#cbarnesOsStr').css('display', 'block');
             cursorInterval = bootSequence();
         },
-        'help': function() {
-            $('.pointerDiv').last().after($('<div></div>').addClass('helpDiv'));
-            for (let [key, value] of Object.entries(descriptions)) {
-                $('.helpDiv').append(key + ' - ' + value + '\n');
+        'help': async function() {
+            $('.line').last().after($('<pre></pre>').addClass('line helpDiv'));
+            for (let chr in descriptions) {
+                $('.helpDiv').last().append(descriptions[chr]);
+                await sleep(0.25);
             }
+        },
+        'boring': function() {
+            location.href = '/test-portfolio';
         }
     };
-    const descriptions = {
-        'reboot': 'Reboots the OS',
-        'help': 'Prints this dialogue'
-    }
 	//Look for keypresses
 	$(document).on('keydown', function(e) {
 		if (booted) {
-            console.log(e.keyCode);
+            //console.log(e.keyCode);
 			if (e.keyCode == 8) {
 				//Delete last charcter if backspace is pushed
 				$('.currentInput').html($('.currentInput').html().slice(0, -1));
@@ -66,7 +71,9 @@ $(document).ready(function() {
 				if (commands.hasOwnProperty(command)) {
 					//If a command is entered
 					commands[command]();
-				}
+				} else {
+                    commandNotFound();
+                }
 				newLine();
 			} else if (e.keyCode != 16) {
 				$('.currentInput').append(e.key);
@@ -167,7 +174,7 @@ async function bootSequence() {
 	//Print ASCII art
     for (let chr in cbarnesOsStr) {
 		$('#cbarnesOsStr').append(cbarnesOsStr[chr]);
-		//await sleep(0.25);
+		await sleep(0.25);
 	}
 	//Print booting notification
     const bootTextStr = 'Booting cbarn.es...';
@@ -176,16 +183,16 @@ async function bootSequence() {
 		await sleep(0.25);
     }
 	cursorInterval = cursor();
-    //await sleep(3000);
+    await sleep(3000);
     //Clear boot screen
 	$('#bootText').empty().css('display', 'none');
     $('#cbarnesOsStr').empty().css('display', 'none');
     //Setup terminal interface
-    $('#bootText').after($('<div></div>').addClass('pointerDiv'));
-    $('.pointerDiv').append($('<div></div>').html('A>').addClass('pointer currentPointer'));
-	$('.pointerDiv').append($('<div></div>').addClass('input currentInput'));
+    $('#bootText').after($('<div></div>').addClass('line'));
+    $('.line').append($('<div></div>').html('A>').addClass('pointer currentPointer'));
+	$('.line').append($('<div></div>').addClass('input currentInput'));
     $('.currentPointer').html('A>')
-    $('.pointerDiv').append($('#cursor'));
+    $('.line').append($('#cursor'));
     booted = true;
     
     return cursorInterval;
@@ -195,13 +202,23 @@ async function bootSequence() {
  */
 function newLine() {
 	//Make new pointer div
-	$('.pointerDiv').last().after($('<div></div>').addClass('pointerDiv'));
+	$('.line').last().after($('<div></div>').addClass('line'));
 	//Remove current classes from old pointer and input
 	$('.currentPointer').removeClass('currentPointer');
 	$('.currentInput').removeClass('currentInput');
 	//Create new pointer and input divs
-	$('.pointerDiv').last().append($('<div></div>').html('A>').addClass('pointer currentPointer'));
-	$('.pointerDiv').last().append($('<div></div>').addClass('input currentInput'));
+	$('.line').last().append($('<div></div>').html('A>').addClass('pointer currentPointer'));
+	$('.line').last().append($('<div></div>').addClass('input currentInput'));
 	//Move cursor into new line div
-	$('.pointerDiv').last().append($('#cursor'));
+	$('.line').last().append($('#cursor'));
+}
+/**
+ * Print if user enters invalid command
+ */
+async function commandNotFound() {
+    $('.line').last().after($('<div></div>').addClass('line notFoundDiv'));
+    for (let chr in 'Command Not Found') {
+        $('.notFoundDiv').last().append('Command Not Found'[chr]);
+        await sleep(0.25);
+    }
 }
