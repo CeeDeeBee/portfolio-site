@@ -1,8 +1,31 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
 body {
     background-image: url(../images/blackDesert.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position-y: 10%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.main-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+.name-flex-container {
+    display: flex;
 }
 .name {
     color: lightgray;
@@ -12,52 +35,39 @@ body {
 .name:hover {
     cursor: pointer;
 }
-.center {
-    display: block;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%, -25%);
+.menu-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
 }
-.menu {
-    display: inline;
-    position: absolute;
-    top: 55%;
-}
-.menu:hover {
+.menu-item:hover {
     cursor: pointer;
 }
 .maker {
-    left: 35%;
     background: -webkit-linear-gradient(#D79900, #FA9900);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .writer {
-    left: 50%;
     background: -webkit-linear-gradient(#009991, #0099FA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .entrepreneur {
-    right: 35%;
     background: -webkit-linear-gradient(#990091, #9900FA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-/*
-.container:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    filter: blur(1px);
-    background: inherit;
+.photo-credit {
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-end;
+    color: lightgray;
 }
-.container {
-    background: inherit;
-}*/
+.photo-credit > p > a {
+    color: lightgray;
+}
