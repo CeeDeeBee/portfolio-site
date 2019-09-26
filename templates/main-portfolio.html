@@ -6,38 +6,35 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main-portfolio.css') }}">
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 
 	    <title>CBarn.es</title>
     </head>           
     <body>
-        <div class='flex-container'>
-            <!-- Main Container -->
-            <div class="main-flex-container">
-                <div class="name-flex-container">
-                    <h1 class="name center">Colin Barnes</h1>
-                </div>
-                <div class="menu-flex-container">
-                    <div>
-                        <h3 class="menu-item maker">Maker</h3>
-                    </div>
-                    <div>
-                        <h3 class="menu-item writer">Writer</h3>
-                    </div>
-                    <div>
-                        <h3 class="menu-item entrepreneur"><a href='https://twitter.com/AfterbangLLC'>Entrepreneur</a></h3>
-                    </div>
-                </div>
+        <!-- Main Container -->
+        <div class="main-flex-container">
+            <div class="name-flex-container">
+                <h1 class="name" data-page='main'>Colin Barnes</h1>
             </div>
-            <!-- Maker Page Container -->
-            <div class='maker-flex-container'>
-                <div class='maker-card'>
-
+            <div class="menu-flex-container">
+                <div class='maker-div menu-div'>
+                    <h3 class="menu-item maker">Maker</h3>
                 </div>
-            </div>
-            <div class='photo-credit'>
-                <p>Background photo by <a href='https://unsplash.com/@jeremybishop'>Jeremy Bishop</a> on <a href='https://unsplash.com/wallpapers/colors/black'>Unsplash</a></p>
+                <div class='entrepreneur-div menu-div fadeout-transform'>
+                    <h3 class="menu-item entrepreneur"><a href='https://twitter.com/AfterbangLLC'>Entrepreneur</a></h3>
+                </div>
+                <div class='writer-div menu-div fadeout-transform'>
+                    <h3 class="menu-item writer">Writer</h3>
+                </div>
             </div>
         </div>
+        <!-- Maker Page Container -->
+        <div class='maker-flex-container'>
+            <div class='maker-card'>
+
+            </div>
+        </div> 
         <!-- JS Imports -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="{{ url_for('static', filename='js/main-portfolio.js') }}"></script>

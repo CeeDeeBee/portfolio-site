@@ -19,7 +19,7 @@ def index():
 @app.route('/classic')
 @auth.login_required
 def classic():
-    return render_template('index.html')
+    return render_template('classic.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
