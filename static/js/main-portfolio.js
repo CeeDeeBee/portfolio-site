@@ -2,8 +2,9 @@
 $(document).ready(function() {
     $('.maker').click(function() {
         //Open maker page when maker button is clicked
-        //$('.menu-flex-container').hide();
-        $('.entrepreneur-div, .writer-div').toggleClass('fadeout');
+        $('.entrepreneur-div, .writer-div').hide();
+        $('.main-container').css('justify-content', 'flex-end');
+        $('.maker-container').removeClass('hidden');
         $('.name').data('page', 'maker');
     });
     $('.name').click(function() {
@@ -13,6 +14,10 @@ $(document).ready(function() {
             $('.menu-div').hide();
             $('.name').data('page', 'about');
         } else {
+            //Hide current content 
+            $('.' + data + '-container').addClass('hidden');
+            //Show main page
+            $('.main-container').css('justify-content', 'center');
             $('.menu-div').show();
             $('.name').data('page', 'main');
         }

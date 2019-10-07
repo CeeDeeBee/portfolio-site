@@ -13,28 +13,57 @@
     </head>           
     <body>
         <!-- Main Container -->
-        <div class="main-flex-container">
-            <div class="name-flex-container">
+        <div class="main-container flex">
+            <div class="name-container flex">
                 <h1 class="name" data-page='main'>Colin Barnes</h1>
             </div>
-            <div class="menu-flex-container">
+            <div class="menu-container flex">
                 <div class='maker-div menu-div'>
                     <h3 class="menu-item maker">Maker</h3>
                 </div>
-                <div class='entrepreneur-div menu-div fadeout-transform'>
+                <div class='entrepreneur-div menu-div'>
                     <h3 class="menu-item entrepreneur"><a href='https://twitter.com/AfterbangLLC'>Entrepreneur</a></h3>
                 </div>
-                <div class='writer-div menu-div fadeout-transform'>
+                <div class='writer-div menu-div'>
                     <h3 class="menu-item writer">Writer</h3>
                 </div>
             </div>
+             <!-- Maker Page Container -->
+            <div class='maker-container flex hidden'>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+                <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
+                    <h1>Cbarn.es Classic</h1>
+                </div>
+            </div> 
         </div>
-        <!-- Maker Page Container -->
-        <div class='maker-flex-container'>
-            <div class='maker-card'>
-
-            </div>
-        </div> 
         <!-- JS Imports -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="{{ url_for('static', filename='js/main-portfolio.js') }}"></script>
