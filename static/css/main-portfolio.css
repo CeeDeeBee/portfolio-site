@@ -57,7 +57,7 @@ body {
     cursor: pointer;
 }
 .maker {
-    background: -webkit-linear-gradient(#D79900, #FA9900);
+    background: linear-gradient(#D79900, #FA9900);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -68,35 +68,40 @@ body {
     height: 37.5%;
 }
 .maker-card {
-    background-color: rgb(54, 54, 54);
+    background: #363636; /*linear-gradient(#848a8a, #363636);*/
     width: 30%;
     padding: 5px;
     margin: 10px;
     border-radius: 10px;
+    /*
     border-width: 2px;
     border-style: solid;
-    border-image: -webkit-linear-gradient(#D79900, #FA9900);
-    /*outline: 2px -webkit-linear-gradient(#D79900, #FA9900);*/
+    border-image: linear-gradient(#D79900, #FA9900);*/
+    /*outline: 2px linear-gradient(#D79900, #FA9900);*/
 }
 .maker-card > img {
     width: 100%;
     border-radius: 10px 10px 0px 0px;
 }
 .maker-card > h1 {
+    text-align: center;
     font-size: 1.5em;
-    font-weight: bold;
-    background: -webkit-linear-gradient(#D79900, #FA9900);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: lightgray;
     margin: 5px 0px 5px 0px;
 }
+.maker-card > div {
+    margin: 0 auto;
+    height: 2px;
+    width: 75%;
+    background: linear-gradient(to right, #D79900, #FA9900);
+}
 .entrepreneur {
-    background: -webkit-linear-gradient(#009991, #0099FA);
+    background: linear-gradient(#009991, #0099FA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .writer {
-    background: -webkit-linear-gradient(#990091, #9900FA);
+    background: linear-gradient(#990091, #9900FA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
