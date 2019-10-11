@@ -95,6 +95,11 @@ body {
 .maker-card > p {
     color: lightgray;
 }
+.maker-card > p > a {
+    background: linear-gradient(#D79900, #FA9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .entrepreneur {
     background: linear-gradient(#009991, #0099FA);
     -webkit-background-clip: text;

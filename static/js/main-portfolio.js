@@ -8,7 +8,7 @@ $(document).ready(function() {
         $('.maker').removeClass('clickable');
         $('.name').data('page', 'maker');
     });
-    $('.maker-card').click(function() {
+    $('.maker-card-title').click(function() {
         //Open the site affiliated with the maker card
         let site = $(this).data('site');
         if (site && site != './classic') {
