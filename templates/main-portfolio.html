@@ -15,60 +15,69 @@
         <!-- Main Container -->
         <div class="main-container flex">
             <div class="name-container flex">
-                <h1 class="name" data-page='main'>Colin Barnes</h1>
+                <h1 class="name clickable" data-page='main'>Colin Barnes</h1>
             </div>
             <div class="menu-container flex">
                 <div class='maker-div menu-div'>
-                    <h3 class="menu-item maker">Maker</h3>
+                    <h3 class="menu-item maker clickable">Maker</h3>
                 </div>
                 <div class='entrepreneur-div menu-div'>
-                    <h3 class="menu-item entrepreneur"><a href='https://twitter.com/AfterbangLLC'>Entrepreneur</a></h3>
+                    <h3 class="menu-item entrepreneur clickable"><a href='https://twitter.com/AfterbangLLC'>Entrepreneur</a></h3>
                 </div>
                 <div class='writer-div menu-div'>
-                    <h3 class="menu-item writer">Writer</h3>
+                    <h3 class="menu-item writer clickable">Writer</h3>
                 </div>
             </div>
              <!-- Maker Page Container -->
             <div class='maker-container flex hidden'>
-                <div class='maker-card'>
+                <div class='maker-card clickable' data-site='./classic'>
                     <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
                     <h1>Cbarn.es Classic</h1>
                     <div></div>
+                    <p>An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.</p>
+                    <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.</p>
                 </div>
-                <div class='maker-card'>
+                <div class='maker-card clickable' data-site='https://chrome.google.com/webstore/detail/crypto-toolbox/eaiipppjcplaacihfjkhhdafojoodjpp?hl=en-US'>
                     <img src="{{ url_for('static', filename='images/crypto-toolbox.png') }}">
                     <h1>Crypto Toolbox</h1>
                     <div></div>
+                    <p>A Google Chrome Extension that allows users to easily track prices of any crypto currency along with tools to track news, portfolio value, and convert between currencies.</p>
+                    <p>Tools: JavaScript, JQuery, D3.js, Crypto Compare streaming API, HTML, CSS.</p>
                 </div>
                 <div class='maker-card'>
+                    <img src="{{ url_for('static', filename='images/lgg.png') }}">
+                    <h1>Land Grant Goods Supplychain Solution</h1>
+                    <div></div>
+                    <p>A blockchain based, supplychain tracking system created as a team with members of Spartan Blockchain Solutions.</p>
+                    <p>Tools: Hyperledger, Angular, TypeScript, Docker, Bash, HTML, CSS.</p>
+                </div>
+                <div class='maker-card clickable' data-site='https://twitter.com/YieldCurveWatch'>
                     <img src="{{ url_for('static', filename='images/yciw.png') }}">
                     <h1>Yield Curve Inversion Watch</h1>
                     <div></div>
+                    <p>A Twitter Bot that tweets the market close difference between two-year and ten-year treasury bond yields every business day.</p>
+                    <p>Tools: Python, Tweepy, Matplotlib, Numpy, US Treasury Department XML data. Hosted on Dreamhost's Cloud Compute Platform.</p>
                 </div>
-                <div class='maker-card'>
+                <div class='maker-card clickable' data-site='https://twitter.com/potusapproval'>
                     <img src="{{ url_for('static', filename='images/potusapproval.png') }}">
                     <h1>POTUS Approval</h1>
                     <div></div>
+                    <p>A Twitter Bot that tweets the United States President's net approval rating along with the precent change from the previous tweet.</p>
+                    <p>Tools: Python, Tweepy, FiveThirtyEight's presidential approval data. Hosted on Dreamhost's Cloud Compute Platform.</p>
                 </div>
                 <div class='maker-card'>
                     <img src="{{ url_for('static', filename='images/evolution-sim.png') }}">
                     <h1>Evolution Simulation</h1>
                     <div></div>
+                    <p>A basic visual simulation of evolution with entities of random, heritable, health values.</p>
+                    <p>Tools: Python, TKinter, Numpy</p>
                 </div>
                 <div class='maker-card'>
                     <img src="{{ url_for('static', filename='images/cbarn-es.png') }}">
                     <h1>Cbarn.es</h1>
                     <div></div>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
-                    <h1>Cbarn.es Classic</h1>
-                    <div></div>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
-                    <h1>Cbarn.es Classic</h1>
-                    <div></div>
+                    <p>This website, created using entirely custom code and limited frameworks.</p>
+                    <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.</p>
                 </div>
             </div> 
         </div>

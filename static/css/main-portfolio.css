@@ -20,6 +20,9 @@ body {
 .hidden {
     display: none;
 }
+.clickable {
+    cursor: pointer;
+}
 .main-container {
     flex-direction: column;
     justify-content: center;
@@ -38,9 +41,6 @@ body {
     font-size: 5em;
     text-align: center;
 }
-.name:hover {
-    cursor: pointer;
-}
 .menu-container {
     flex-direction: row;
     justify-content: space-around;
@@ -52,9 +52,6 @@ body {
 }
 .menu-item {
     font-size: 2.5em;
-}
-.menu-item:hover {
-    cursor: pointer;
 }
 .maker {
     background: linear-gradient(#D79900, #FA9900);
@@ -94,6 +91,9 @@ body {
     height: 2px;
     width: 75%;
     background: linear-gradient(to right, #D79900, #FA9900);
+}
+.maker-card > p {
+    color: lightgray;
 }
 .entrepreneur {
     background: linear-gradient(#009991, #0099FA);
