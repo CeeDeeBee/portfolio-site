@@ -40,64 +40,21 @@
             </div>
              <!-- Maker Page Container -->
             <div class='maker-container flex hidden'>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/greencodeBIG.jpg') }}">
-                    <h1 class='maker-card-title clickable' data-site='./classic'>Cbarn.es Classic</h1>
-                    <div></div>
-                    <p>An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.</p>
-                    <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.</p>
-                    <p><a href='https://github.com/CeeDeeBee/portfolio-site' target='_blank'>GitHub</a></p>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/crypto-toolbox.png') }}">
-                    <h1 class='maker-card-title clickable'  data-site='https://chrome.google.com/webstore/detail/crypto-toolbox/eaiipppjcplaacihfjkhhdafojoodjpp?hl=en-US'>Crypto Toolbox</h1>
-                    <div></div>
-                    <p>A Google Chrome Extension that allows users to easily track prices of any crypto currency along with tools to track news, portfolio value, and convert between currencies.</p>
-                    <p>Tools: JavaScript, JQuery, D3.js, Crypto Compare streaming API, HTML, CSS.</p>
-                    <p><a href='https://github.com/CeeDeeBee/Crypto-Converter' target='_blank'>GitHub</a></p>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/lgg.png') }}">
-                    <h1>Land Grant Goods Supplychain Solution</h1>
-                    <div></div>
-                    <p>A blockchain based, supplychain tracking system created as a team with members of Spartan Blockchain Solutions.</p>
-                    <p>Tools: Hyperledger, Angular, TypeScript, Docker, Bash, HTML, CSS.</p>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/yciw.png') }}">
-                    <h1 class='maker-card-title clickable' data-site='https://twitter.com/YieldCurveWatch'>Yield Curve Inversion Watch</h1>
-                    <div></div>
-                    <p>A Twitter Bot that tweets the market close difference between two-year and ten-year treasury bond yields every business day.</p>
-                    <p>Tools: Python, Tweepy, Matplotlib, Numpy, US Treasury Department XML data. Hosted on Dreamhost's Cloud Compute Platform.</p>
-                    <p><a href='https://github.com/CeeDeeBee/yield-curve-bot-public' target='_blank'>GitHub</a></p>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/potusapproval.png') }}">
-                    <h1 class='maker-card-title clickable' data-site='https://twitter.com/potusapproval'>POTUS Approval</h1>
-                    <div></div>
-                    <p>A Twitter Bot that tweets the United States President's net approval rating along with the precent change from the previous tweet.</p>
-                    <p>Tools: Python, Tweepy, FiveThirtyEight's presidential approval data. Hosted on Dreamhost's Cloud Compute Platform.</p>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/evolution-sim.png') }}">
-                    <h1>Evolution Simulation</h1>
-                    <div></div>
-                    <p>A basic visual simulation of evolution with entities of random, heritable, health values.</p>
-                    <p>Tools: Python, TKinter, Numpy</p>
-                    <p><a href='https://github.com/CeeDeeBee/evolution-simulation' target='_blank'>GitHub</a></p>
-                </div>
-                <div class='maker-card'>
-                    <img src="{{ url_for('static', filename='images/cbarn-es.png') }}">
-                    <h1>Cbarn.es</h1>
-                    <div></div>
-                    <p>This website, created using entirely custom code and limited frameworks.</p>
-                    <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.</p>
-                    <p><a href='https://github.com/CeeDeeBee/portfolio-site' target='_blank'>GitHub</a></p>
+                <!-- Maker Card Template-->
+                <div id='maker-card-template' class='hidden'>
+                    <div class='maker-card'>
+                        <img>
+                        <h1>Cbarn.es Classic</h1>
+                        <div></div>
+                        <p>An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.</p>
+                        <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.</p>
+                        <p><a></a></p>
+                    </div>
                 </div>
             </div> 
         </div>
         <!-- JS Imports -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="{{ url_for('static', filename='js/main-portfolio.js') }}"></script>
     </body>
 </html>
