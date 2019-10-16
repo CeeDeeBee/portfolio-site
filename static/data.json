@@ -1,0 +1,78 @@
+{
+    "makerCards": [
+        {
+            "title": "Cbarn.es Classic",
+            "site": "./classic",
+            "image": "greencodeBig.jpg",
+            "description": "An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.",
+            "tools": "Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.",
+            "github": "https://github.com/CeeDeeBee/portfolio-site"
+        },
+        {
+            "title": "Crypto Toolbox",
+            "site": "https://chrome.google.com/webstore/detail/crypto-toolbox/eaiipppjcplaacihfjkhhdafojoodjpp?hl=en-US",
+            "image": "crypto-toolbox.png",
+            "description": "A Google Chrome Extension that allows users to easily track prices of any crypto currency along with tools to track news, portfolio value, and convert between currencies.",
+            "tools": "Tools: JavaScript, JQuery, D3.js, Crypto Compare streaming API, HTML, CSS.",
+            "github": "https://github.com/CeeDeeBee/Crypto-Converter"
+        },
+        {
+            "title": "Land Grant Goods Supplychain Solution",
+            "site": null,
+            "image": "lgg.png",
+            "description": "A blockchain based, supplychain tracking system created as a team with members of Spartan Blockchain Solutions.",
+            "tools": "Tools: Hyperledger, Angular, TypeScript, Docker, Bash, HTML, CSS.",
+            "github": null
+        },
+        {
+            "title": "Yield Curve Inversion Watch",
+            "site": "https://twitter.com/YieldCurveWatch",
+            "image": "yciw.png",
+            "description": "A Twitter Bot that tweets the market close difference between two-year and ten-year treasury bond yields every business day.",
+            "tools": "Tools: Python, Tweepy, Matplotlib, Numpy, US Treasury Department XML data. Hosted on Dreamhost's Cloud Compute Platform.",
+            "github": "https://github.com/CeeDeeBee/yield-curve-bot-public"
+        },
+        {
+            "title": "POTUS Approval",
+            "site": "https://twitter.com/potusapproval",
+            "image": "potusapproval.png",
+            "description": "A Twitter Bot that tweets the United States President's net approval rating along with the precent change from the previous tweet.",
+            "tools": "Tools: Python, Tweepy, FiveThirtyEight's presidential approval data. Hosted on Dreamhost's Cloud Compute Platform.",
+            "github": null
+        },
+        {
+            "title": "Evolution Simulation",
+            "site": null,
+            "image": "evolution-sim.png",
+            "description": "A basic visual simulation of evolution with entities of random, heritable, health values.",
+            "tools": "Tools: Python, TKinter, Numpy",
+            "github": "https://github.com/CeeDeeBee/evolution-simulation"
+        },
+        {
+            "title": "Cbarn.es",
+            "site": null,
+            "image": "cbarn-es.png",
+            "description": "This website, created using entirely custom code and limited frameworks.",
+            "tools": "Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.",
+            "github": "https://github.com/CeeDeeBee/portfolio-site"
+        }
+    ],
+    "about": {
+        "description": "is a maker, entrepreneur, writer and senior economics student at Michigan State University.",
+        "resume": "resume.pdf",
+        "socialLinks": [
+            {
+                "link": "https://twitter.com/colin_barnes",
+                "img": "twitterButton.png"
+            },
+            {
+                "link": "https://www.linkedin.com/in/colin-barnes-327969135/",
+                "img": "twitterButton.png"
+            },
+            {
+                "link": "https://github.com/CeeDeeBee",
+                "img": "twitterButton.png"
+            }
+        ]
+    }
+}
