@@ -23,6 +23,13 @@ $(document).ready(function() {
             window.open(site, '_self');
         }
     });
+    $('.writer').click(function() {
+        $('.entrepreneur-div, .maker-div').hide();
+        $('.main-container').css('justify-content', 'flex-end');
+        $('.writer').removeClass('clickable');
+        $('.name').data('page', 'writer');
+        $('.writer-container').removeClass('hidden');
+    });
     $('.name').click(function() {
         //When name is clicked open about page if current page is main or open main page if current page is not main
         let data = $('.name').data('page');
@@ -31,6 +38,7 @@ $(document).ready(function() {
                 isAboutPageInit = aboutPageInit();
             }
             $('.menu-div').hide();
+            $('.main-container').css('justify-content', 'flex-end');
             $('.name').data('page', 'about');
             $('.about-container').removeClass('hidden');
         } else {
@@ -57,17 +65,17 @@ function makerPageInit() {
             let h1 = makerCardTemplate.find('h1');
             if (makerPageData[i].site) {
                 h1.addClass('maker-card-title clickable');
-                h1.prop('data-site', makerPageData[i].site);
+                h1.attr('data-site', makerPageData[i].site);
             } else {
                 h1.removeClass();
-                h1.removeAttr('data-site')
+                h1.removeAttr('data-site');
             }
             h1.text(makerPageData[i].title);
             let pTags = makerCardTemplate.find('p');
             $(pTags[0]).text(makerPageData[i].description);
             $(pTags[1]).text(makerPageData[i].tools);
             let makerCardA = makerCardTemplate.find('a');
-            if (makerPageData[i].github != null) {
+            if (makerPageData[i].github) {
                makerCardA.prop({'href': makerPageData[i].github, 'target': '_blank'}).text('GitHub');
             } else {
                 makerCardA.empty().removeAttr('href target');
@@ -86,13 +94,12 @@ function aboutPageInit() {
         let aboutPageData = data.about;
         let aboutContainer = $('.about-container');
 
-        aboutContainer.find('p').text(aboutPageData.description);
-        aboutContainer.find('a').prop('href', aboutPageData.resume).text('Resume');
+        $(aboutContainer.find('p')[0]).text(aboutPageData.description);
+        $(aboutContainer.find('a')[0]).prop({'href': '/static/' + aboutPageData.resume, 'target': '_blank'}).text('Resume').addClass('resume-link');
         let aboutDiv = aboutContainer.find('div');
-        console.log(aboutPageData);
         for (let i = 0; i < aboutPageData.socialLinks.length; i ++) {
-            aboutDiv.append($('<a></a>').prop({'href': '/static/' + aboutPageData.socialLinks[i].link, 'target': '_blank'}));
-            aboutDiv.append($('<img>').prop({'src': '/static/images/' + aboutPageData.socialLinks[i].img, 'height': '200px'}));
+            aboutDiv.append($('<a></a>').prop({'href': aboutPageData.socialLinks[i].link, 'target': '_blank'}));
+            $(aboutDiv.find('a')[i]).append($('<img>').prop('src', '/static/images/' + aboutPageData.socialLinks[i].img).addClass('about-img'));
         }
     });
 

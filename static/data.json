@@ -58,21 +58,28 @@
         }
     ],
     "about": {
-        "description": "is a maker, entrepreneur, writer and senior economics student at Michigan State University.",
+        "description": "is a maker, entrepreneur, writer and senior in economics at Michigan State University.",
         "resume": "resume.pdf",
         "socialLinks": [
             {
                 "link": "https://twitter.com/colin_barnes",
-                "img": "twitterButton.png"
-            },
-            {
-                "link": "https://www.linkedin.com/in/colin-barnes-327969135/",
-                "img": "twitterButton.png"
+                "img": "twitterIcon.png"
             },
             {
                 "link": "https://github.com/CeeDeeBee",
-                "img": "twitterButton.png"
+                "img": "githubIcon.png"
+            },
+            {
+                "link": "https://www.linkedin.com/in/colin-barnes-327969135/",
+                "img": "linkedinIcon.png"
             }
         ]
-    }
+    },
+    "writer": [
+        {
+            "title": "This is A Title",
+            "synopsis": "A short, but descriptive, synopsis of the article",
+            "content": "A bunch of content"
+        }
+    ]
 }
