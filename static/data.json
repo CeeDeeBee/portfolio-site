@@ -77,9 +77,28 @@
     },
     "writer": [
         {
+            "id": "article-id",
             "title": "This is A Title",
             "synopsis": "A short, but descriptive, synopsis of the article",
-            "content": "A bunch of content"
+            "contentLocation": "./writer/linkToContent"
+        },
+        {
+            "id": "article-id",
+            "title": "This is A Title",
+            "synopsis": "A short, but descriptive, synopsis of the article",
+            "contentLocation": "./writer/linkToContent"
+        },
+        {
+            "id": "article-id",
+            "title": "This is A Title",
+            "synopsis": "A short, but descriptive, synopsis of the article",
+            "contentLocation": "./writer/linkToContent"
+        },
+        {
+            "id": "article-id",
+            "title": "This is A Title",
+            "synopsis": "A short, but descriptive, synopsis of the article",
+            "contentLocation": "./writer/linkToContent"
         }
     ]
 }

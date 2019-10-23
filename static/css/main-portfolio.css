@@ -87,7 +87,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.maker-container {
+.card-container {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -109,11 +109,13 @@ body {
     width: 100%;
     border-radius: 10px 10px 0px 0px;
 }
-.maker-card > h1 {
-    text-align: center;
+.card > h1 {
     font-size: 1.5em;
     color: lightgray;
     margin: 5px 0px 5px 0px;
+}
+.maker-card > h1 {
+    text-align: center;
 }
 .maker-card > div {
     margin: 0 auto;
@@ -121,7 +123,7 @@ body {
     width: 75%;
     background: linear-gradient(to right, #D79900, #FA9900);
 }
-.maker-card > p {
+.card > p {
     color: lightgray;
 }
 .maker-card > p > a {
@@ -139,6 +141,19 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.writer-card {
+    background: #363636;
+    width: 75%;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.writer-card > div {
+    /*margin: 0 auto;*/
+    height: 2px;
+    width: 33%;
+    background: linear-gradient(to right, #990091, #9900FA);
+}
 @media (max-width: 700px) {
     .menu-container {
         flex-direction: column;
@@ -146,7 +161,7 @@ body {
     .menu-item {
         text-align: center;
     }
-    .maker-container {
+    .card-container {
         height: 51.5%;
     }
     .maker-card {
