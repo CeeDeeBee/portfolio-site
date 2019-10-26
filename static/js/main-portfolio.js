@@ -66,6 +66,9 @@ function makerPageInit() {
     $.getJSON('/static/data.json', function(data) {
         let makerPageData = data.makerCards
         let makerContainer = $('.maker-container');
+        let makerColumn1 = $('#maker-column-1');
+        let makerColumn2 = $('#maker-column-2');
+        let makerColumn3 = $('#maker-column-3');
         let makerCardTemplate = $('#maker-card-template');
         let img = makerCardTemplate.find('img');
         let h1 = makerCardTemplate.find('h1');
@@ -89,8 +92,19 @@ function makerPageInit() {
             } else {
                 a.empty().removeAttr('href target');
             }
-
-            makerContainer.append(makerCardTemplate.html());
+            //If not a mobile device
+            if (screen.width >= 699) {
+                //Append card to desired column
+                if (i === 0 || i % 3 === 0) {
+                    makerColumn1.append(makerCardTemplate.html());
+                } else if (i === 1 || (i - 1) % 3 === 0) {
+                    makerColumn2.append(makerCardTemplate.html());
+                } else {
+                    makerColumn3.append(makerCardTemplate.html());
+                }
+            } else {
+                makerContainer.append(makerCardTemplate.html());
+            }
         }
     });
 

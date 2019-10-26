@@ -88,16 +88,18 @@ body {
     -webkit-text-fill-color: transparent;
 }
 .card-container {
-    flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
     height: 37.5%;
 }
+.maker-column {
+    flex-direction: column;
+    width: 30%;
+}
 .maker-card {
     background: #363636; /*linear-gradient(#848a8a, #363636);*/
-    width: 30%;
     padding: 5px;
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
     border-radius: 10px;
     /*
     border-width: 2px;
@@ -166,5 +168,6 @@ body {
     }
     .maker-card {
         width: 100%;
+        margin: 10px;
     }
 }
