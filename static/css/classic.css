@@ -17,16 +17,46 @@ html, body {
   background: #282828;
   color: #33ff33;
 }
-/*
-.pointerDiv {
-  display: inline;
-}*/
+.flex {
+  display: flex;
+}
+#osTitle {
+  justify-content: center;
+}
 .pointer {
   display: inline;
 }
+#osInfo > br {
+  display: none;
+}
+#shell {
+  height: 100%;
+  overflow: scroll;
+  padding: 0px 10px 0px 10px;
+}
 .input {
   display: inline;
+  overflow-wrap: break-word;
 }
 #cursor {
   display: inline;
+}
+.forceKbInput {
+  display: none;
+}
+@media (max-width: 700px) {
+  #osTitle {
+    font-size: .3em;
+  }
+  #osInfo > br {
+    display: block;
+  }
+  .forceKbInput {
+    display: block;
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
 }

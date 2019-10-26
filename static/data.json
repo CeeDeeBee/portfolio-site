@@ -3,7 +3,7 @@
         {
             "title": "Cbarn.es Classic",
             "site": "./classic",
-            "image": "greencodeBig.jpg",
+            "image": "classic.png",
             "description": "An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.",
             "tools": "Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.",
             "github": "https://github.com/CeeDeeBee/portfolio-site"

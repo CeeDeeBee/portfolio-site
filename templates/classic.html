@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<!-- Global site tag (gtag.js) - Google Analytics 
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YMFPFYBERQ"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -9,15 +9,22 @@
 			gtag('js', new Date());
 
 			gtag('config', 'G-YMFPFYBERQ');
-		</script>
+		</script> -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
 
 		<title>CBarn.es Classic</title>
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/classic.css') }}">
 	</head>
 	<body>
-		<pre id='cbarnesOsStr'></pre>
+		<input class='forceKbInput' type='text' placeholder="test">
+		<div id='osTitle' class='flex'>
+			<pre id='cbarnesOsStr'></pre>
+		</div>
 		<div id='bootText'></div>
 		<div id='cursor'></div>
+		<div id='shell'>
+			<pre id='osInfo'></pre>
+		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="{{ url_for('static', filename='js/classic.js') }}"></script>
 	</body>
