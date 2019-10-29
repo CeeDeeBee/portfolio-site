@@ -37,16 +37,37 @@ const osInfo2 = `(C)Copyright CBarn.es Corp 2019
 Enter "help" To List Commands`
 
 const descriptions = `Commands:
-Reboot - Reboots the OS
-Help - Prints this dialogue
-Boring - Go back to the boring site`
+BORING - Go to the boring site
+DIR - Display contents of current directory
+HELP - Prints this dialogue
+REBOOT - Reboots the OS`
+const directorys = {
+    'maker': {
+        'type': '<DIR>',
+        'content': {}
+    },
+    'writer': {
+        'type': '<DIR>',
+        'content': {}
+    },
+    'entrepreneur': {
+        'type': 'TXT',
+        'content': {}
+    },
+    'about': {
+        'type': 'TXT',
+        'content': {}
+    }
+}
 var booted = false;
 //On DOM load
 $(document).ready(function() {
     $(document).click(function (e) { 
         $('.forceKbInput').focus(); 
     });
-	cursorInterval = bootSequence();
+    cursorInterval = bootSequence();
+    let isDirInit = false;
+    let path = 'A:\\';
 	const commands = {
         'reboot': function() {
             booted = false;
@@ -64,9 +85,44 @@ $(document).ready(function() {
                 $('.helpDiv').last().append(descriptions[chr]);
                 await sleep(0.25);
             }
+            newLine();
         },
         'boring': function() {
             location.href = '/test-portfolio';
+        },
+        'dir': async function() {
+            let dirSize = 0;
+            if (!isDirInit) {
+                isDirInit = initDir();
+            }
+            $('.line').last().after($('<div></div>').addClass('line dirList'));
+            $('.dirList').last().append('<br>Directory of ' + path + '<br><br>');
+            for (let item in directorys) {
+                textItem = item.toUpperCase();
+                //Add item name
+                for (let chr = 0; chr < textItem.length; chr ++) {
+                    $('.dirList').last().append(textItem[chr]);
+                    await sleep(0.25);
+                }
+                //Add spaces between item name and type
+                for (let i = 0; i < (13 - item.length); i ++) {
+                    $('.dirList').last().append('&nbsp;');
+                    await sleep(0.25);
+                }
+                //Add item type
+                for (let i = 0; i < directorys[item]['type'].length; i ++) {
+                    $('.dirList').last().append(directorys[item]['type'][i]);
+                    await sleep(0.25);
+                }
+                $('.dirList').last().append('<br>');
+                dirSize ++;
+                await sleep(100);
+            }
+            for (let i = 0; i < 10; i ++) {
+                $('.dirList').last().append('&nbsp;');
+            }
+            $('.dirList').last().append(dirSize + ' File(s)' + '<br><br>');
+            newLine();
         }
     };
 	//Listen for keypresses
@@ -85,7 +141,6 @@ $(document).ready(function() {
 				} else {
                     commandNotFound();
                 }
-				newLine();
 			} else if (e.keyCode != 16) {
 				$('.currentInput').text($('.currentInput').text() + e.key);
 			}
@@ -122,11 +177,12 @@ function cursor() {
  * Static boot sequence that runs when page opens
  */
 async function bootSequence() {
-	//Print ASCII art
+    //Print ASCII art
+    /*
     for (let chr in cbarnesOsStr) {
 		$('#cbarnesOsStr').append(cbarnesOsStr[chr]);
 		await sleep(0.25);
-	}
+	}*/
 	//Print booting notification
     const bootTextStr = 'Booting cbarn.es...';
     for (let chr in bootTextStr) {
@@ -134,7 +190,7 @@ async function bootSequence() {
 		await sleep(0.25);
     }
     cursorInterval = cursor();
-    await sleep(3000);
+    //await sleep(3000);
     $('#cursor').hide();
     //Clear boot screen
 	$('#bootText').empty().css('display', 'none');
@@ -183,4 +239,21 @@ async function commandNotFound() {
         $('.notFoundDiv').last().append('Command Not Found'[chr]);
         await sleep(0.25);
     }
+}
+/**
+ * Initialize Directorys
+ */
+function initDir() {
+    $.getJSON('/static/data.json', function(data) {
+        for (let i = 0; i < data['makerCards'].length; i ++) {
+            directorys['maker']['content'][data['makerCards'][i]['title']] = { 
+                'type': 'TXT', 
+                'description': data['makerCards'][i]['description'],
+                'tools': data['makerCards'][i]['tools'],
+                'github': data['makerCards'][i]['github']
+            };
+        }
+    });
+
+    return true;
 }

@@ -9,7 +9,7 @@ $(document).ready(function() {
         if (!isMakerPageInit) {
             isMakerPageInit = makerPageInit();
         }
-        $('.entrepreneur-div, .writer-div').hide();
+        $('.entrepreneur-div, .writer-div').fadeOut('slow');
         $('.main-container').css('justify-content', 'flex-end');
         $('.maker').removeClass('clickable');
         $('.name').data('page', 'maker');
@@ -28,11 +28,11 @@ $(document).ready(function() {
         if (!isWriterPageInit) {
             isWriterPageInit = writerPageInit();
         }
-        $('.entrepreneur-div, .maker-div').hide();
+        $('.entrepreneur-div, .maker-div').fadeOut('slow');
         $('.main-container').css('justify-content', 'flex-end');
         $('.writer').removeClass('clickable');
         $('.name').data('page', 'writer');
-        $('.writer-container').removeClass('hidden');
+        $('.writer-container').fadeIn('slow').css('display', 'flex');
     });
     $('.writer-container').on('click', '.writer-card-title', function() {
         //Open the page affiliated with the writer card
@@ -51,10 +51,10 @@ $(document).ready(function() {
             $('.about-container').removeClass('hidden');
         } else {
             //Hide current content 
-            $('.' + data + '-container').addClass('hidden');
+            $('.' + data + '-container').fadeOut('slow');
             //Show main page
             $('.main-container').css('justify-content', 'center');
-            $('.menu-div').show();
+            $('.menu-div').fadeIn('slow');
             $('.menu-item').addClass('clickable');
             $('.name').data('page', 'main');
         }
