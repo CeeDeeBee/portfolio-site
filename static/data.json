@@ -84,19 +84,19 @@
         },
         {
             "id": "article-id",
-            "title": "This is A Title",
+            "title": "This is A Title 1",
             "synopsis": "A short, but descriptive, synopsis of the article",
             "contentLocation": "./writer/linkToContent"
         },
         {
             "id": "article-id",
-            "title": "This is A Title",
+            "title": "This is A Title 2",
             "synopsis": "A short, but descriptive, synopsis of the article",
             "contentLocation": "./writer/linkToContent"
         },
         {
             "id": "article-id",
-            "title": "This is A Title",
+            "title": "This is A Title 3",
             "synopsis": "A short, but descriptive, synopsis of the article",
             "contentLocation": "./writer/linkToContent"
         }
