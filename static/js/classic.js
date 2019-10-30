@@ -71,7 +71,7 @@ $(document).ready(function() {
         $('.forceKbInput').focus(); 
     });
     cursorInterval = bootSequence();
-    let isDirInit = false;
+    initDir();
     let pathText = 'A:\\';
     let pathArray = [];
     let currentDirectory = directories;
@@ -99,9 +99,6 @@ $(document).ready(function() {
         },
         'dir': async function() {
             let dirSize = 0;
-            if (!isDirInit) {
-                isDirInit = initDir();
-            }
             $('.line').last().after($('<div></div>').addClass('line dirList'));
             $('.dirList').last().append('<br>Directory of ' + pathText + '<br><br>');
             let dirContent = currentDirectory['content']
@@ -140,21 +137,27 @@ $(document).ready(function() {
         },
         'cd': async function(commandProps) {
             if (commandProps[0]) {
-                pathArray.push(commandProps[0]);
-                let newDir = getNestedDir(pathArray);
-                if (newDir) {
-                    currentDirectory = newDir;
-                    pathText = pathText.concat(commandProps[0].toUpperCase());
-                    newLine();
-                } else {
-                    pathArray.pop();
-                    $('.line').last().after($('<div></div>').addClass('line dirNotFound'));
-                    for (let chr in 'Invalid directory') {
-                        $('.dirNotFound').last().append('Invalid directory'[chr]);
-                        await sleep(0.25);
+                if (commandProps[0] === '..') {
+                    if (pathArray.length > 0) {
+                        pathArray.pop();
+                        let newDir = getNestedDir(pathArray);
+                        currentDirectory = newDir;
+                        pathText = pathText.split('\\')[0].concat('\\');
+                        newLine();
+                    } else {
+                        dirNotFound();
                     }
-                    $('.dirNotFound').last().append('<br><br>');
-                    newLine();
+                } else {
+                    pathArray.push(commandProps[0]);
+                    let newDir = getNestedDir(pathArray);
+                    if (newDir) {
+                        currentDirectory = newDir;
+                        pathText = pathText.concat(commandProps[0].toUpperCase());
+                        newLine();
+                    } else {
+                        pathArray.pop();
+                        dirNotFound();
+                    }
                 }
             } else {
                 $('.line').last().after($('<div></div>').addClass('line cdNoDir'));
@@ -170,7 +173,6 @@ $(document).ready(function() {
 	//Listen for keypresses
 	$(document).on('keydown', function(e) {
 		if (booted) {
-            //console.log(e.keyCode);
 			if (e.keyCode == 8) {
 				//Delete last charcter if backspace is pushed
 				$('.currentInput').html($('.currentInput').html().slice(0, -1));
@@ -286,6 +288,18 @@ async function commandNotFound() {
     newLine();
 }
 /**
+ * Print if directory doesn't exist
+ */
+async function dirNotFound() {
+    $('.line').last().after($('<div></div>').addClass('line dirNotFound'));
+    for (let chr in 'Invalid directory') {
+        $('.dirNotFound').last().append('Invalid directory'[chr]);
+        await sleep(0.25);
+    }
+    $('.dirNotFound').last().append('<br><br>');
+    newLine();
+}
+/**
  * Initialize Directories
  */
 function initDir() {
@@ -307,21 +321,23 @@ function initDir() {
             };
         }
     });
-    console.log(directories)
-    return true;
 }
 
 /**
  * Return nested dir
  */
 function getNestedDir(pathArray) {
-    let dir = directories['content'];
-    for (item in pathArray) {
-        dir = dir[pathArray[item]];
-    }
-    if (dir['type'] === '<DIR>') {
-        return dir;
+    if (pathArray.length > 0) {
+        let dir = directories['content'];
+        for (item in pathArray) {
+            dir = dir[pathArray[item]];
+        }
+        if (dir && dir['type'] === '<DIR>') {
+            return dir;
+        } else {
+            return undefined;
+        }
     } else {
-        return undefined;
+        return directories;
     }
 }
