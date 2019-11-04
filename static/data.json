@@ -1,6 +1,7 @@
 {
     "makerCards": [
         {
+            "id": "cbarn-es-classic",
             "title": "Cbarn.es Classic",
             "site": "./classic",
             "image": "classic.png",
@@ -9,6 +10,7 @@
             "github": "https://github.com/CeeDeeBee/portfolio-site"
         },
         {
+            "id": "crypto-toolbox",
             "title": "Crypto Toolbox",
             "site": "https://chrome.google.com/webstore/detail/crypto-toolbox/eaiipppjcplaacihfjkhhdafojoodjpp?hl=en-US",
             "image": "crypto-toolbox.png",
@@ -17,6 +19,7 @@
             "github": "https://github.com/CeeDeeBee/Crypto-Converter"
         },
         {
+            "id": "land-grant-goods-supplychain-solution",
             "title": "Land Grant Goods Supplychain Solution",
             "site": null,
             "image": "lgg.png",
@@ -25,6 +28,7 @@
             "github": null
         },
         {
+            "id": "yield-curve-inversion-watch",
             "title": "Yield Curve Inversion Watch",
             "site": "https://twitter.com/YieldCurveWatch",
             "image": "yciw.png",
@@ -33,6 +37,7 @@
             "github": "https://github.com/CeeDeeBee/yield-curve-bot-public"
         },
         {
+            "id": "potus-approval",
             "title": "POTUS Approval",
             "site": "https://twitter.com/potusapproval",
             "image": "potusapproval.png",
@@ -41,6 +46,7 @@
             "github": null
         },
         {
+            "id": "evolution-simulation",
             "title": "Evolution Simulation",
             "site": null,
             "image": "evolution-sim.png",
@@ -49,6 +55,7 @@
             "github": "https://github.com/CeeDeeBee/evolution-simulation"
         },
         {
+            "id": "cbarn-es",
             "title": "Cbarn.es",
             "site": null,
             "image": "cbarn-es.png",
@@ -62,14 +69,17 @@
         "resume": "resume.pdf",
         "socialLinks": [
             {
+                "type": "twitter",
                 "link": "https://twitter.com/colin_barnes",
                 "img": "twitterIcon.png"
             },
             {
+                "type": "github",
                 "link": "https://github.com/CeeDeeBee",
                 "img": "githubIcon.png"
             },
             {
+                "type": "linkedin",
                 "link": "https://www.linkedin.com/in/colin-barnes-327969135/",
                 "img": "linkedinIcon.png"
             }
@@ -83,19 +93,19 @@
             "contentLocation": "./writer/linkToContent"
         },
         {
-            "id": "article-id",
+            "id": "article-id-1",
             "title": "This is A Title 1",
             "synopsis": "A short, but descriptive, synopsis of the article",
             "contentLocation": "./writer/linkToContent"
         },
         {
-            "id": "article-id",
+            "id": "article-id-2",
             "title": "This is A Title 2",
             "synopsis": "A short, but descriptive, synopsis of the article",
             "contentLocation": "./writer/linkToContent"
         },
         {
-            "id": "article-id",
+            "id": "article-id-3",
             "title": "This is A Title 3",
             "synopsis": "A short, but descriptive, synopsis of the article",
             "contentLocation": "./writer/linkToContent"

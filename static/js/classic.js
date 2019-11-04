@@ -41,8 +41,9 @@ BORING - Go to the boring site.
 CD [Directory] - Change to specifiec directory.
 CD [..] - Change to parent directory.
 DIR [FileName] - Display contents of specified directory. Defaults to current directory.
-HELP - Prints this dialogue.
-REBOOT - Reboots the OS.`
+HELP - Print this dialogue.
+REBOOT - Reboot the OS.
+TYPE [FileName]- Print content of TXT file.`
 const directories = {
     'type': '<DIR>',
     'content': {
@@ -90,6 +91,7 @@ $(document).ready(function() {
             $('.line').last().after($('<pre></pre>').addClass('line helpDiv'));
             for (let chr in descriptions) {
                 $('.helpDiv').last().append(descriptions[chr]);
+                scrollToBottom();
                 await sleep(0.25);
             }
             newLine();
@@ -100,7 +102,15 @@ $(document).ready(function() {
         'dir': async function() {
             let dirSize = 0;
             $('.line').last().after($('<div></div>').addClass('line dirList'));
-            $('.dirList').last().append('<br>Directory of ' + pathText + '<br><br>');
+            $('.dirList').last().append('<br>');
+            //Print dir statement
+            let dirStatement = 'Directory of ' + pathText;
+            for (let chr in dirStatement) {
+                $('.dirList').last().append(dirStatement[chr]);
+                scrollToBottom();
+                await sleep(0.25);
+            }
+            $('.dirList').last().append('<br><br>');
             let dirContent = currentDirectory['content']
             let longestItem = 0;
             for (let item in dirContent) {
@@ -113,6 +123,7 @@ $(document).ready(function() {
                 //Add item name
                 for (let chr = 0; chr < textItem.length; chr ++) {
                     $('.dirList').last().append(textItem[chr]);
+                    scrollToBottom();
                     await sleep(0.25);
                 }
                 //Add spaces between item name and type
@@ -126,13 +137,22 @@ $(document).ready(function() {
                     await sleep(0.25);
                 }
                 $('.dirList').last().append('<br>');
+                scrollToBottom();
                 dirSize ++;
                 await sleep(100);
             }
             for (let i = 0; i < longestItem - 1; i ++) {
                 $('.dirList').last().append('&nbsp;');
+                scrollToBottom();
+                await sleep(0.25);
             }
-            $('.dirList').last().append(dirSize + ' File(s)' + '<br><br>');
+            let dirSizeStatement = dirSize + ' File(s)';
+            for (let chr in dirSizeStatement) {
+                $('.dirList').last().append(dirSizeStatement[chr]);
+                scrollToBottom();
+                await sleep(0.25);
+            }
+            $('.dirList').last().append('<br><br>');
             newLine();
         },
         'cd': async function(commandProps) {
@@ -140,33 +160,80 @@ $(document).ready(function() {
                 if (commandProps[0] === '..') {
                     if (pathArray.length > 0) {
                         pathArray.pop();
-                        let newDir = getNestedDir(pathArray);
+                        let newDir = getNestedFile(pathArray);
                         currentDirectory = newDir;
                         pathText = pathText.split('\\')[0].concat('\\');
                         newLine();
                     } else {
-                        dirNotFound();
+                        printStr('Invalid directory');
                     }
                 } else {
                     pathArray.push(commandProps[0]);
-                    let newDir = getNestedDir(pathArray);
-                    if (newDir) {
+                    let newDir = getNestedFile(pathArray);
+                    if (newDir && newDir['type'] === '<DIR>') {
                         currentDirectory = newDir;
                         pathText = pathText.concat(commandProps[0].toUpperCase());
                         newLine();
                     } else {
                         pathArray.pop();
-                        dirNotFound();
+                        printStr('Invalid directory');
                     }
                 }
             } else {
-                $('.line').last().after($('<div></div>').addClass('line cdNoDir'));
-                for (let chr in pathText) {
-                    $('.cdNoDir').last().append(pathText[chr]);
-                    await sleep(0.25);
+                printStr(pathText);
+            }
+        },
+        'type': async function(commandProps) {
+            if (commandProps[0]) {
+                if (pathArray.length > 0) {
+                    pathArray.push('content', commandProps[0]);
+                } else {
+                    pathArray.push(commandProps[0]);
                 }
-                $('.cdNoDir').last().append('<br><br>');
-                newLine();
+                let newDir = getNestedFile(pathArray);
+                if (newDir && newDir['type'] === 'TXT') {
+                    //If printing a maker description
+                    if (pathArray.includes('maker')) {
+                        let description = newDir['description'];
+                        printStr(description, makeNewLine = false).then(function() {
+                            let tools = newDir['tools'];
+                            printStr(tools, makeNewLine = false).then(function() {
+                                if (newDir['github']) {
+                                    let github = 'Github: ' + newDir['github'];
+                                    printStr(github);
+                                } else {
+                                    newLine();
+                                }
+                            });
+                        });
+                    }
+                    //If printing entrepreneur 
+                    else if (commandProps[0] === 'entrepreneur') {
+                        printStr('Afterbang Software: https://twitter.com/AfterbangLLC');
+                    }
+                    //If printing about
+                    else if (commandProps[0] === 'about') {
+                        console.log(newDir);
+                        let description = newDir['content']['description'];
+                        printStr(description, makeNewLine = false).then(function() {
+                            let resume = 'Resume: https://cbarn.es/static/' + newDir['content']['resume'];
+                            printStr(resume, makeNewLine = false).then(async function() {
+                                for (let item in newDir['content']['social']) {
+                                    let socialTxt = item[0].toUpperCase() + item.slice(1    ) + ': ' + newDir['content']['social'][item];
+                                    await printStr(socialTxt, makeNewline = false);
+                                }
+                                newLine();
+                            });
+                        });
+                    }
+                } else {
+                    printStr('File not found');
+                }
+                for (let i = 0; i < 2; i ++) {
+                    pathArray.pop();
+                }
+            } else {
+                printStr('Invalid number of parameters');
             }
         }
     };
@@ -272,7 +339,12 @@ function newLine() {
 	$('.line').last().append($('<div></div>').addClass('input currentInput'));
 	//Move cursor into new line div
     $('.line').last().append($('#cursor'));
-    //Scroll to bottom of page
+    scrollToBottom();
+}
+/**
+ * Scroll to bottom of page
+ */
+function scrollToBottom() {
     $('#shell').scrollTop($('#shell')[0].scrollHeight);
 }
 /**
@@ -288,16 +360,19 @@ async function commandNotFound() {
     newLine();
 }
 /**
- * Print if directory doesn't exist
+ * Print if string below last line
  */
-async function dirNotFound() {
-    $('.line').last().after($('<div></div>').addClass('line dirNotFound'));
-    for (let chr in 'Invalid directory') {
-        $('.dirNotFound').last().append('Invalid directory'[chr]);
+async function printStr(str, makeNewLine = true) {
+    $('.line').last().after($('<div></div>').addClass('line'));
+    for (let chr in str) {
+        $('.line').last().append(str[chr]);
+        scrollToBottom();
         await sleep(0.25);
     }
-    $('.dirNotFound').last().append('<br><br>');
-    newLine();
+    $('.line').last().append('<br><br>');
+    if (makeNewLine) {
+        newLine();
+    }
 }
 /**
  * Initialize Directories
@@ -306,7 +381,7 @@ function initDir() {
     $.getJSON('/static/data.json', function(data) {
         //Maker directory
         for (let i = 0; i < data['makerCards'].length; i ++) {
-            directories['content']['maker']['content'][data['makerCards'][i]['title']] = { 
+            directories['content']['maker']['content'][data['makerCards'][i]['id']] = { 
                 'type': 'TXT', 
                 'description': data['makerCards'][i]['description'],
                 'tools': data['makerCards'][i]['tools'],
@@ -315,25 +390,40 @@ function initDir() {
         }
         //Writer directory
         for (let i = 0; i < data['writer'].length; i ++) {
-            directories['content']['writer']['content'][data['writer'][i]['title']] = {
+            directories['content']['writer']['content'][data['writer'][i]['id']] = {
                 'type': 'TXT',
                 'text': data['writer'][i]['contentLocation']
             };
         }
+        //About File
+        directories['content']['about']['content'] = {
+            'type': 'TXT',
+            'description': data['about']['description'],
+            'resume': data['about']['resume'],
+            'social': {}
+        }
+        for (let i = 0; i < data['about']['socialLinks'].length; i ++) {
+            directories['content']['about']['content']['social'][data['about']['socialLinks'][i]['type']] = data['about']['socialLinks'][i]['link'];
+        }
     });
+    console.log(directories);
 }
 
 /**
  * Return nested dir
  */
-function getNestedDir(pathArray) {
+function getNestedFile(pathArray) {
     if (pathArray.length > 0) {
-        let dir = directories['content'];
+        let file = directories['content'];
         for (item in pathArray) {
-            dir = dir[pathArray[item]];
+            try {
+                file = file[pathArray[item]];
+            } catch(error) {
+                return undefined;
+            }
         }
-        if (dir && dir['type'] === '<DIR>') {
-            return dir;
+        if (file) {
+            return file;
         } else {
             return undefined;
         }
