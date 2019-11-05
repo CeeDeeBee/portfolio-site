@@ -33,7 +33,7 @@ body {
 }
 .name-container {
     width: 100%;
-    margin: 0;
+    /*margin: 0;*/
 }
 .name {
     color: lightgray;
@@ -42,13 +42,17 @@ body {
     text-align: center;
 }
 .menu-container {
+    flex-direction: column;
+    justify-content: space-around;
+}
+.menu-row-1 {
     flex-direction: row;
     justify-content: space-around;
-    /*flex-wrap: wrap;*/
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox;      /* TWEENER - IE 10 */
-    display: -webkit-flex;     /* NEW - Chrome */
+}
+.menu-row-2 {
+    flex-direction: row;
+    justify-content: center;
+    color: lightgray;
 }
 .menu-item {
     font-size: 2.5em;
@@ -156,8 +160,11 @@ body {
     width: 33%;
     background: linear-gradient(to right, #990091, #9900FA);
 }
+.about {
+    font-size: 2em;
+}
 @media (max-width: 700px) {
-    .menu-container {
+    .menu-row-1 {
         flex-direction: column;
     }
     .menu-item {

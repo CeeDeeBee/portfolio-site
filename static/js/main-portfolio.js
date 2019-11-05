@@ -1,19 +1,12 @@
+//Global variables
+let isMakerPageInit = false;
+let isAboutPageInit = false; 
+let isWriterPageInit = false;
 //On DOM Load
 $(document).ready(function() {
-    let isMakerPageInit = false;
-    let isAboutPageInit = false; 
-    let isWriterPageInit = false;
-
     $('.maker').click(function() {
         //Open maker page when maker button is clicked
-        if (!isMakerPageInit) {
-            isMakerPageInit = makerPageInit();
-        }
-        $('.entrepreneur-div, .writer-div').fadeOut('slow');
-        $('.main-container').css('justify-content', 'flex-end');
-        $('.maker').removeClass('clickable');
-        $('.name').data('page', 'maker');
-        $('.maker-container').removeClass('hidden');
+        openPage('maker');
     });
     $('.maker-container').on('click', '.maker-card-title', function() {
         //Open the site affiliated with the maker card
@@ -25,14 +18,7 @@ $(document).ready(function() {
         }
     });
     $('.writer').click(function() {
-        if (!isWriterPageInit) {
-            isWriterPageInit = writerPageInit();
-        }
-        $('.entrepreneur-div, .maker-div').fadeOut('slow');
-        $('.main-container').css('justify-content', 'flex-end');
-        $('.writer').removeClass('clickable');
-        $('.name').data('page', 'writer');
-        $('.writer-container').fadeIn('slow').css('display', 'flex');
+        openPage('writer');
     });
     $('.writer-container').on('click', '.writer-card-title', function() {
         //Open the page affiliated with the writer card
@@ -41,15 +27,7 @@ $(document).ready(function() {
     $('.name').click(function() {
         //When name is clicked open about page if current page is main or open main page if current page is not main
         let data = $('.name').data('page');
-        if (data == 'main') {
-            if (!isAboutPageInit) {
-                isAboutPageInit = aboutPageInit();
-            }
-            $('.menu-div').hide();
-            $('.main-container').css('justify-content', 'flex-end');
-            $('.name').data('page', 'about');
-            $('.about-container').removeClass('hidden');
-        } else {
+        if (data != 'main') {
             //Hide current content 
             $('.' + data + '-container').fadeOut('slow');
             //Show main page
@@ -57,95 +35,115 @@ $(document).ready(function() {
             $('.menu-div').fadeIn('slow');
             $('.menu-item').addClass('clickable');
             $('.name').data('page', 'main');
+            $('.name').removeClass('clickable');
         }
+    });
+    $('.about').click(function() {
+        openPage('about');
     });
 });
 
 function makerPageInit() {
     //Initialize Maker Page Cards With JSON
-    $.getJSON('/static/data.json', function(data) {
-        let makerPageData = data.makerCards
-        let makerContainer = $('.maker-container');
-        let makerColumn1 = $('#maker-column-1');
-        let makerColumn2 = $('#maker-column-2');
-        let makerColumn3 = $('#maker-column-3');
-        let makerCardTemplate = $('#maker-card-template');
-        let img = makerCardTemplate.find('img');
-        let h1 = makerCardTemplate.find('h1');
-        let p = makerCardTemplate.find('p');
-        let a = makerCardTemplate.find('a');
+    if (!isMakerPageInit) {
+        $.getJSON('/static/data.json', function(data) {
+            let makerPageData = data.makerCards
+            let makerContainer = $('.maker-container');
+            let makerColumn1 = $('#maker-column-1');
+            let makerColumn2 = $('#maker-column-2');
+            let makerColumn3 = $('#maker-column-3');
+            let makerCardTemplate = $('#maker-card-template');
+            let img = makerCardTemplate.find('img');
+            let h1 = makerCardTemplate.find('h1');
+            let p = makerCardTemplate.find('p');
+            let a = makerCardTemplate.find('a');
 
-        for (let i = 0; i < makerPageData.length; i ++) {
-            img.prop('src', "/static/images/" + makerPageData[i].image);
-            if (makerPageData[i].site) {
-                h1.addClass('clickable');
-                h1.attr('data-site', makerPageData[i].site);
-            } else {
-                h1.removeClass();
-                h1.removeAttr('data-site');
-            }
-            h1.text(makerPageData[i].title);
-            $(p[0]).text(makerPageData[i].description);
-            $(p[1]).text(makerPageData[i].tools);
-            if (makerPageData[i].github) {
-                a.prop({'href': makerPageData[i].github, 'target': '_blank'}).text('GitHub');
-            } else {
-                a.empty().removeAttr('href target');
-            }
-            //If not a mobile device
-            if (screen.width >= 699) {
-                //Append card to desired column
-                if (i === 0 || i % 3 === 0) {
-                    makerColumn1.append(makerCardTemplate.html());
-                } else if (i === 1 || (i - 1) % 3 === 0) {
-                    makerColumn2.append(makerCardTemplate.html());
+            for (let i = 0; i < makerPageData.length; i ++) {
+                img.prop('src', "/static/images/" + makerPageData[i].image);
+                if (makerPageData[i].site) {
+                    h1.addClass('clickable');
+                    h1.attr('data-site', makerPageData[i].site);
                 } else {
-                    makerColumn3.append(makerCardTemplate.html());
+                    h1.removeClass();
+                    h1.removeAttr('data-site');
                 }
-            } else {
-                makerContainer.append(makerCardTemplate.html());
+                h1.text(makerPageData[i].title);
+                $(p[0]).text(makerPageData[i].description);
+                $(p[1]).text(makerPageData[i].tools);
+                if (makerPageData[i].github) {
+                    a.prop({'href': makerPageData[i].github, 'target': '_blank'}).text('GitHub');
+                } else {
+                    a.empty().removeAttr('href target');
+                }
+                //If not a mobile device
+                if (screen.width >= 699) {
+                    //Append card to desired column
+                    if (i === 0 || i % 3 === 0) {
+                        makerColumn1.append(makerCardTemplate.html());
+                    } else if (i === 1 || (i - 1) % 3 === 0) {
+                        makerColumn2.append(makerCardTemplate.html());
+                    } else {
+                        makerColumn3.append(makerCardTemplate.html());
+                    }
+                } else {
+                    makerContainer.append(makerCardTemplate.html());
+                }
             }
-        }
-    });
+        });
 
-    return true;
+        isMakerPageInit = true;
+    }
 }
 
 function aboutPageInit() {
     //Initialize About Page With JSON
-    $.getJSON('/static/data.json', function(data) {
-        let aboutPageData = data.about;
-        let aboutContainer = $('.about-container');
+    if (!isAboutPageInit) {
+        $.getJSON('/static/data.json', function(data) {
+            let aboutPageData = data.about;
+            let aboutContainer = $('.about-container');
 
-        $(aboutContainer.find('p')[0]).text(aboutPageData.description);
-        $(aboutContainer.find('a')[0]).prop({'href': '/static/' + aboutPageData.resume, 'target': '_blank'}).text('Resume').addClass('resume-link');
-        let aboutDiv = aboutContainer.find('div');
-        for (let i = 0; i < aboutPageData.socialLinks.length; i ++) {
-            aboutDiv.append($('<a></a>').prop({'href': aboutPageData.socialLinks[i].link, 'target': '_blank'}));
-            $(aboutDiv.find('a')[i]).append($('<img>').prop('src', '/static/images/' + aboutPageData.socialLinks[i].img).addClass('about-img'));
-        }
-    });
+            $(aboutContainer.find('p')[0]).text(aboutPageData.description);
+            $(aboutContainer.find('a')[0]).prop({'href': '/static/' + aboutPageData.resume, 'target': '_blank'}).text('Resume').addClass('resume-link');
+            let aboutDiv = aboutContainer.find('div');
+            for (let i = 0; i < aboutPageData.socialLinks.length; i ++) {
+                aboutDiv.append($('<a></a>').prop({'href': aboutPageData.socialLinks[i].link, 'target': '_blank'}));
+                $(aboutDiv.find('a')[i]).append($('<img>').prop('src', '/static/images/' + aboutPageData.socialLinks[i].img).addClass('about-img'));
+            }
+        });
+    }
 
-    return true;
+    isAboutPageInit = true;
 }
 
 function writerPageInit() {
     //Initialize Writer Page With JSON
-    $.getJSON('/static/data.json', function(data) {
-        let writerPageData = data.writer;
-        let writerContainer = $('.writer-container');
-        let writerCardTemplate = $('#writer-card-template');
-        let h1 = writerCardTemplate.find('h1');
-        let p = writerCardTemplate.find('p');
+    if (!isWriterPageInit) {
+        $.getJSON('/static/data.json', function(data) {
+            let writerPageData = data.writer;
+            let writerContainer = $('.writer-container');
+            let writerCardTemplate = $('#writer-card-template');
+            let h1 = writerCardTemplate.find('h1');
+            let p = writerCardTemplate.find('p');
 
-        for (let i = 0; i < writerPageData.length; i ++) {
-            h1.text(writerPageData[i].title)
-            h1.attr('data-content', writerPageData[i].contentLocation);
-            p.text(writerPageData[i].synopsis);
+            for (let i = 0; i < writerPageData.length; i ++) {
+                h1.text(writerPageData[i].title)
+                h1.attr('data-content', writerPageData[i].contentLocation);
+                p.text(writerPageData[i].synopsis);
 
-            writerContainer.append(writerCardTemplate.html());
-        }
-    });
+                writerContainer.append(writerCardTemplate.html());
+            }
+        });
+    }
 
-    return true;
+    isWriterPageInit = true;
+}
+
+function openPage(page) {
+    window[page + 'PageInit']();
+    $('.menu-div').not('.' + page + '-div').fadeOut('slow');
+    $('.main-container').css('justify-content', 'flex-end');
+    $('.name').addClass('clickable');
+    $('.' + page).removeClass('clickable');
+    $('.name').data('page', page);
+    $('.' + page + '-container').fadeIn('slow').css('display', 'flex');
 }
