@@ -99,26 +99,45 @@ $(document).ready(function() {
         'boring': function() {
             location.href = '/test-portfolio';
         },
-        'dir': async function() {
+        'dir': async function(commandProps) {
+            let dirToList;
+            let dirPathText;
+            if (commandProps.length > 0) {
+                dirProp = commandProps[0].toLowerCase();
+                pathArray.push(dirProp);
+                dirToList = getNestedFile(pathArray);
+                pathArray.pop();
+                if (dirToList && dirToList['type'] === '<DIR>') {
+                    dirToList = dirToList['content'];
+                    dirPathText = pathText + commandProps[0] + '\\'; 
+                } else {
+                    printStr('File not found');
+                    return;
+                }
+            } else {
+                dirToList = currentDirectory['content'];
+                dirPathText = pathText;
+            }
             let dirSize = 0;
             $('.line').last().after($('<div></div>').addClass('line dirList'));
             $('.dirList').last().append('<br>');
             //Print dir statement
-            let dirStatement = 'Directory of ' + pathText;
+            let dirStatement = 'Directory of ' + dirPathText;
             for (let chr in dirStatement) {
                 $('.dirList').last().append(dirStatement[chr]);
                 scrollToBottom();
                 await sleep(0.25);
             }
             $('.dirList').last().append('<br><br>');
-            let dirContent = currentDirectory['content']
+            //Find longest directory length to set # of spaces between dir name and type
             let longestItem = 0;
-            for (let item in dirContent) {
+            for (let item in dirToList) {
                 if (item.length > longestItem) {
                     longestItem = item.length;
                 }
             }
-            for (let item in dirContent) {
+            //Print each of the items in the directory
+            for (let item in dirToList) {
                 textItem = item.toUpperCase();
                 //Add item name
                 for (let chr = 0; chr < textItem.length; chr ++) {
@@ -132,8 +151,8 @@ $(document).ready(function() {
                     await sleep(0.25);
                 }
                 //Add item type
-                for (let i = 0; i < dirContent[item]['type'].length; i ++) {
-                    $('.dirList').last().append(dirContent[item]['type'][i]);
+                for (let i = 0; i < dirToList[item]['type'].length; i ++) {
+                    $('.dirList').last().append(dirToList[item]['type'][i]);
                     await sleep(0.25);
                 }
                 $('.dirList').last().append('<br>');
@@ -141,11 +160,13 @@ $(document).ready(function() {
                 dirSize ++;
                 await sleep(100);
             }
+            //Add spaces for file(s) statement
             for (let i = 0; i < longestItem - 1; i ++) {
                 $('.dirList').last().append('&nbsp;');
                 scrollToBottom();
                 await sleep(0.25);
             }
+            //Print file(s) statement
             let dirSizeStatement = dirSize + ' File(s)';
             for (let chr in dirSizeStatement) {
                 $('.dirList').last().append(dirSizeStatement[chr]);

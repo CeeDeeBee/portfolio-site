@@ -8,13 +8,15 @@ $(document).ready(function() {
         //Open maker page when maker button is clicked
         openPage('maker');
     });
-    $('.maker-container').on('click', '.maker-card-title', function() {
+    $('.maker-container').on('click', '.main-content', function() {
         //Open the site affiliated with the maker card
         let site = $(this).data('site');
-        if (site != './classic') {
-            window.open(site, '_blank');
-        } else {
-            window.open(site, '_self');
+        if (site) {
+            if (site != './classic') {
+                window.open(site, '_blank');
+            } else {
+                window.open(site, '_self');
+            }
         }
     });
     $('.writer').click(function() {
@@ -29,10 +31,11 @@ $(document).ready(function() {
         let data = $('.name').data('page');
         if (data != 'main') {
             //Hide current content 
-            $('.' + data + '-container').fadeOut('slow');
+            $('.' + data + '-container').fadeOut('slow', function() {
+                $('.menu-div').show('slow').removeClass('collapse');
+                $('.main-container').css('justify-content', 'center');
+            });
             //Show main page
-            $('.main-container').css('justify-content', 'center');
-            $('.menu-div').fadeIn('slow');
             $('.menu-item').addClass('clickable');
             $('.name').data('page', 'main');
             $('.name').removeClass('clickable');
@@ -53,6 +56,8 @@ function makerPageInit() {
             let makerColumn2 = $('#maker-column-2');
             let makerColumn3 = $('#maker-column-3');
             let makerCardTemplate = $('#maker-card-template');
+            let makerCardDiv = makerCardTemplate.find('.maker-card');
+            let mainContent = makerCardTemplate.find('.main-content')
             let img = makerCardTemplate.find('img');
             let h1 = makerCardTemplate.find('h1');
             let p = makerCardTemplate.find('p');
@@ -61,11 +66,11 @@ function makerPageInit() {
             for (let i = 0; i < makerPageData.length; i ++) {
                 img.prop('src', "/static/images/" + makerPageData[i].image);
                 if (makerPageData[i].site) {
-                    h1.addClass('clickable');
-                    h1.attr('data-site', makerPageData[i].site);
+                    makerCardDiv.addClass('clickable');
+                    mainContent.attr('data-site', makerPageData[i].site);
                 } else {
-                    h1.removeClass();
-                    h1.removeAttr('data-site');
+                    makerCardDiv.removeClass('clickable');
+                    mainContent.removeAttr('data-site');
                 }
                 h1.text(makerPageData[i].title);
                 $(p[0]).text(makerPageData[i].description);
@@ -140,10 +145,13 @@ function writerPageInit() {
 
 function openPage(page) {
     window[page + 'PageInit']();
-    $('.menu-div').not('.' + page + '-div').fadeOut('slow');
-    $('.main-container').css('justify-content', 'flex-end');
+    /*$('.menu-div').not('.' + page + '-div').addClass('collapse').hide('slow');*/
+    $('.menu-div').not('.' + page + '-div').hide('slow', function() {
+        $('.' + page + '-div').addClass('translate');
+        $('.' + page + '-container').fadeIn('slow').css('display', 'flex');
+        $('.main-container').css('justify-content', 'flex-end');
+    }).addClass('collapse');
     $('.name').addClass('clickable');
     $('.' + page).removeClass('clickable');
     $('.name').data('page', page);
-    $('.' + page + '-container').fadeIn('slow').css('display', 'flex');
 }

@@ -40,6 +40,10 @@ body {
     margin: auto;
     font-size: 5em;
     text-align: center;
+    transition: .5s;
+}
+.name.clickable:hover {
+    transform: scale(1.1);
 }
 .menu-container {
     flex-direction: column;
@@ -54,8 +58,23 @@ body {
     justify-content: center;
     color: lightgray;
 }
+.menu-div {
+    flex-grow: 1;
+    text-align: center;
+    transition: flex-grow 1s ease-in-out;
+}
 .menu-item {
     font-size: 2.5em;
+    transition: .5s;
+}
+.collapse {
+    flex-grow: 0;
+}
+.menu-item:hover {
+    transform: scale(1.1);
+}
+.menu-item.translate {
+    transform: translateX(50%);
 }
 .about-container {
     flex-direction: column;
@@ -66,7 +85,8 @@ body {
     text-align: center;
     font-size: 1.5em;
     color: lightgray;
-    margin-bottom: 0px;
+    padding: 0 10px 0 10px;
+    margin: 0;
 }
 .resume-link {
     text-align: center;
@@ -105,31 +125,35 @@ body {
     padding: 5px;
     margin: 10px 0px 10px 0px;
     border-radius: 10px;
+    transition: .5s;
     /*
     border-width: 2px;
     border-style: solid;
     border-image: linear-gradient(#D79900, #FA9900);*/
     /*outline: 2px linear-gradient(#D79900, #FA9900);*/
 }
-.maker-card > img {
+.maker-card.clickable:hover {
+    transform: scale(1.1);
+}
+.maker-card > .main-content > img {
     width: 100%;
     border-radius: 10px 10px 0px 0px;
 }
-.card > h1 {
+.card h1 {
     font-size: 1.5em;
     color: lightgray;
     margin: 5px 0px 5px 0px;
 }
-.maker-card > h1 {
+.maker-card > .main-content > h1 {
     text-align: center;
 }
-.maker-card > div {
+.maker-card > .main-content > div {
     margin: 0 auto;
     height: 2px;
     width: 75%;
     background: linear-gradient(to right, #D79900, #FA9900);
 }
-.card > p {
+.card p {
     color: lightgray;
 }
 .maker-card > p > a {
@@ -153,6 +177,10 @@ body {
     padding: 5px;
     margin: 10px;
     border-radius: 10px;
+    transition: .5s;
+}
+.writer-card:hover {
+    transform: scale(1.1);
 }
 .writer-card > div {
     /*margin: 0 auto;*/
@@ -176,5 +204,8 @@ body {
     .maker-card {
         width: 100%;
         margin: 10px;
+    }
+    .about-img {
+        height: 60px;
     }
 }

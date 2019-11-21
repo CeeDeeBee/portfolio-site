@@ -9,7 +9,7 @@ auth = HTTPBasicAuth()
 #password verification
 @auth.verify_password
 def verify_password(username, password):
-    return sha256_crypt.verify(password, '$5$rounds=535000$wQZnJI6FWOX9DiVr$PZW/TcyBDi/0wlMyj361nXpmBTdweSzO33FUEzPMAy1')
+    return sha256_crypt.verify(password, '$5$rounds=535000$/N1h8U72YEDxq/wL$X/.d44gPuTH7/jD5qa/Jo3poPtUtczP.wN1AGWZTyE9')
 
 @app.route('/test-portfolio')
 @auth.login_required
