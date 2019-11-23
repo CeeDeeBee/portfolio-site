@@ -71,6 +71,10 @@ $(document).ready(function() {
     $(document).click(function (e) { 
         $('.forceKbInput').focus(); 
     });
+    let mobile = false;
+    if ($(document).width() < 700) {
+        mobile = true;
+    }
     cursorInterval = bootSequence();
     initDir();
     let pathText = 'A:\\';
@@ -138,21 +142,35 @@ $(document).ready(function() {
             }
             //Print each of the items in the directory
             for (let item in dirToList) {
+                if (mobile) {
+                    $('.dirList').last().append($('<span></span>').addClass('dirNameSpan'));
+                    $('.dirList').last().append($('<span></span>').addClass('dirTypeSpan'));
+                }
                 textItem = item.toUpperCase();
                 //Add item name
                 for (let chr = 0; chr < textItem.length; chr ++) {
-                    $('.dirList').last().append(textItem[chr]);
+                    if (mobile) {
+                        $('.dirNameSpan').last().append(textItem[chr]);
+                    } else {
+                        $('.dirList').last().append(textItem[chr]);
+                    }
                     scrollToBottom();
                     await sleep(0.25);
                 }
-                //Add spaces between item name and type
-                for (let i = 0; i < ((longestItem + 1) - item.length); i ++) {
-                    $('.dirList').last().append('&nbsp;');
-                    await sleep(0.25);
+                if (!mobile) {
+                    //Add spaces between item name and type
+                    for (let i = 0; i < ((longestItem + 1) - item.length); i ++) {
+                        $('.dirList').last().append('&nbsp;');
+                        await sleep(0.25);
+                    }
                 }
                 //Add item type
                 for (let i = 0; i < dirToList[item]['type'].length; i ++) {
-                    $('.dirList').last().append(dirToList[item]['type'][i]);
+                    if (mobile) {
+                        $('.dirTypeSpan').last().append(dirToList[item]['type'][i]);
+                    } else {
+                        $('.dirList').last().append(dirToList[item]['type'][i]);
+                    }
                     await sleep(0.25);
                 }
                 $('.dirList').last().append('<br>');
@@ -160,16 +178,25 @@ $(document).ready(function() {
                 dirSize ++;
                 await sleep(100);
             }
-            //Add spaces for file(s) statement
-            for (let i = 0; i < longestItem - 1; i ++) {
-                $('.dirList').last().append('&nbsp;');
-                scrollToBottom();
-                await sleep(0.25);
-            }
+            if (!mobile) {
+                //Add spaces for file(s) statement
+                for (let i = 0; i < longestItem - 1; i ++) {
+                    $('.dirList').last().append('&nbsp;');
+                    scrollToBottom();
+                    await sleep(0.25);
+                }
+            }  
             //Print file(s) statement
             let dirSizeStatement = dirSize + ' File(s)';
+            if (mobile) {
+                $('.dirList').last().append($('<span></span>').addClass('dirNumFiles'));
+            }
             for (let chr in dirSizeStatement) {
-                $('.dirList').last().append(dirSizeStatement[chr]);
+                if (mobile) {
+                    $('.dirNumFiles').last().append(dirSizeStatement[chr]);
+                } else {
+                    $('.dirList').last().append(dirSizeStatement[chr]);
+                }
                 scrollToBottom();
                 await sleep(0.25);
             }

@@ -44,6 +44,16 @@ html, body {
 .forceKbInput {
   display: none;
 }
+.dirNameSpan {
+  display: inline-block;
+  width: 75%;
+}
+.dirTypeSpan {
+  float: right;
+}
+.dirNumFiles {
+  float: right;
+}
 @media (max-width: 700px) {
   #osTitle {
     font-size: .3em;
