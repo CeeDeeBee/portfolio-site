@@ -66,14 +66,16 @@ const directories = {
     }
 }
 var booted = false;
+let mobile = false;
 //On DOM load
 $(document).ready(function() {
-    $(document).click(function (e) { 
-        $('.forceKbInput').focus(); 
-    });
-    let mobile = false;
     if ($(document).width() < 700) {
         mobile = true;
+        $(document).click(function() { 
+            $('.forceKbInput').focus();
+            console.log($(window).height());
+        });
+        $("meta").attr('height', window.innerHeight);
     }
     cursorInterval = bootSequence();
     initDir();
@@ -92,7 +94,7 @@ $(document).ready(function() {
             cursorInterval = bootSequence();
         },
         'help': async function() {
-            $('.line').last().after($('<pre></pre>').addClass('line helpDiv'));
+            $('.forceKbInput').before($('<pre></pre>').addClass('line helpDiv'));
             for (let chr in descriptions) {
                 $('.helpDiv').last().append(descriptions[chr]);
                 scrollToBottom();
@@ -123,7 +125,7 @@ $(document).ready(function() {
                 dirPathText = pathText;
             }
             let dirSize = 0;
-            $('.line').last().after($('<div></div>').addClass('line dirList'));
+            $('.forceKbInput').before($('<div></div>').addClass('line dirList'));
             $('.dirList').last().append('<br>');
             //Print dir statement
             let dirStatement = 'Directory of ' + dirPathText;
@@ -254,6 +256,19 @@ $(document).ready(function() {
                                 }
                             });
                         });
+                    } 
+                    //If printing essay
+                    else if (pathArray.includes('writer')) {
+                        let content = newDir['content'];
+                        await printStr(newDir['title'], false);
+                        await printStr(newDir['pubDate'], false);
+                        for (let i = 0; i < content.length; i ++) {
+                            let makeNewLine = false;
+                            if (i + 1 === content.length) {
+                                makeNewLine = true;
+                            }
+                            await printStr(content[i], makeNewLine, false);
+                        }
                     }
                     //If printing entrepreneur 
                     else if (commandProps[0] === 'entrepreneur') {
@@ -273,7 +288,7 @@ $(document).ready(function() {
                                 newLine();
                             });
                         });
-                    }
+                    } 
                 } else {
                     printStr('File not found');
                 }
@@ -365,7 +380,7 @@ async function bootSequence() {
         $('#osInfo').append(osInfo2[chr]);
         await sleep(0.25);
     }
-    $('#shell').append($('<div></div>').addClass('line'));
+    $('.forceKbInput').before($('<div></div>').addClass('line'));
     $('.line').append($('<div></div>').html('A>').addClass('pointer currentPointer'));
 	$('.line').append($('<div></div>').addClass('input currentInput'));
     $('.line').append($('#cursor').show());
@@ -378,7 +393,7 @@ async function bootSequence() {
  */
 function newLine() {
 	//Make new pointer div
-	$('.line').last().after($('<div></div>').addClass('line'));
+	$('.forceKbInput').before($('<div></div>').addClass('line'));
 	//Remove current classes from old pointer and input
 	$('.currentPointer').removeClass('currentPointer');
 	$('.currentInput').removeClass('currentInput');
@@ -394,12 +409,14 @@ function newLine() {
  */
 function scrollToBottom() {
     $('#shell').scrollTop($('#shell')[0].scrollHeight);
+    console.log($('#shell')[0].scrollHeight);
+    //$('#shell').scrollTop(0);
 }
 /**
  * Print if user enters invalid command
  */
 async function commandNotFound() {
-    $('.line').last().after($('<div></div>').addClass('line notFoundDiv'));
+    $('.forceKbInput').before($('<div></div>').addClass('line notFoundDiv'));
     for (let chr in 'Bad command or file name') {
         $('.notFoundDiv').last().append('Bad command or file name'[chr]);
         await sleep(0.25);
@@ -410,11 +427,13 @@ async function commandNotFound() {
 /**
  * Print if string below last line
  */
-async function printStr(str, makeNewLine = true) {
-    $('.line').last().after($('<div></div>').addClass('line'));
+async function printStr(str, makeNewLine = true, scroll = true) {
+    $('.forceKbInput').before($('<div></div>').addClass('line'));
     for (let chr in str) {
         $('.line').last().append(str[chr]);
-        scrollToBottom();
+        if (scroll) {
+            scrollToBottom();
+        }
         await sleep(0.25);
     }
     $('.line').last().append('<br><br>');
@@ -440,7 +459,9 @@ function initDir() {
         for (let i = 0; i < data['writer'].length; i ++) {
             directories['content']['writer']['content'][data['writer'][i]['id']] = {
                 'type': 'TXT',
-                'text': data['writer'][i]['contentLocation']
+                'title': data['writer'][i]['title'],
+                'pubDate': data['writer'][i]['pubDate'],
+                'content': data['writer'][i]['content']
             };
         }
         //About File

@@ -16,7 +16,6 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/classic.css') }}">
 	</head>
 	<body>
-		<input class='forceKbInput' type='text' placeholder="test">
 		<div id='osTitle' class='flex'>
 			<pre id='cbarnesOsStr'></pre>
 		</div>
@@ -24,6 +23,7 @@
 		<div id='cursor'></div>
 		<div id='shell'>
 			<pre id='osInfo'></pre>
+			<input class='forceKbInput' type='text' placeholder="test">
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="{{ url_for('static', filename='js/classic.js') }}"></script>
