@@ -89,26 +89,54 @@
         {
             "id": "article-id",
             "title": "This is A Title",
+            "pubDate": "12-01-2019",
             "synopsis": "A short, but descriptive, synopsis of the article",
-            "contentLocation": "./writer/linkToContent"
+            "content": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem risus, volutpat nec fermentum aliquam, luctus nec ligula. Cras pretium vulputate ornare. In a rhoncus odio. Cras nec nulla sapien. Proin blandit orci eu elit imperdiet pretium. Sed sit amet enim quam. In hac habitasse platea dictumst.",
+                "Suspendisse sed fringilla arcu. Morbi dui mauris, elementum pharetra cursus in, mattis id urna. Mauris fringilla tristique risus sed eleifend. Nam in elit tortor. Nullam ante velit, commodo ut euismod ut, tempor a sapien. Sed id feugiat massa. Pellentesque rhoncus sit amet magna vel lobortis. Cras et mauris orci. Suspendisse sollicitudin ultrices accumsan. Nunc odio est, iaculis non pulvinar sed, pretium eget orci. Pellentesque sapien mauris, venenatis et nisi eu, lobortis lacinia quam. Morbi nulla libero, vehicula vel libero eget, cursus aliquet felis.",
+                "Aenean tristique sit amet metus eu convallis. Donec nisi ipsum, consectetur ac lacus pulvinar, auctor volutpat velit. Nunc sit amet massa vitae ligula ultrices vehicula. Vivamus rhoncus augue sit amet scelerisque vehicula. Nullam velit massa, laoreet in felis at, pretium mattis ex. Etiam aliquet semper purus, at aliquam elit scelerisque non. Donec nec risus sit amet est sollicitudin gravida. Aenean pulvinar eget elit ut mattis.",
+                "Duis egestas dui ac diam porttitor vulputate. Sed porta nibh vitae lacus feugiat cursus. Cras in quam non massa congue facilisis. Curabitur hendrerit sollicitudin eros et varius. Phasellus convallis nibh ac dolor pharetra mollis. Etiam porta tristique ante quis posuere. Aenean hendrerit lectus quis mi laoreet venenatis. Maecenas nec maximus arcu.",
+                "Aenean aliquam felis tortor, ac cursus eros laoreet vel. Fusce vulputate purus varius consequat accumsan. Nam iaculis erat vitae porttitor pretium. Proin eu sapien eget ante aliquam vulputate laoreet vel sapien. Cras ultrices hendrerit nisl, in iaculis nibh aliquet vel. Sed et sollicitudin risus. Quisque felis mauris, iaculis id dolor id, tincidunt dictum augue. Nam ac feugiat magna. Suspendisse tincidunt et risus sit amet porttitor. Cras at dolor at metus facilisis imperdiet. Etiam ut orci eget velit eleifend aliquet at vitae purus. Aenean eget nisi pellentesque, imperdiet erat non, sodales orci. Aliquam erat volutpat. Morbi odio sapien, maximus non magna ultricies, aliquam vulputate magna."
+            ]
         },
         {
             "id": "article-id-1",
             "title": "This is A Title 1",
+            "pubDate": "12-01-2019",
             "synopsis": "A short, but descriptive, synopsis of the article",
-            "contentLocation": "./writer/linkToContent"
+            "content": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem risus, volutpat nec fermentum aliquam, luctus nec ligula. Cras pretium vulputate ornare. In a rhoncus odio. Cras nec nulla sapien. Proin blandit orci eu elit imperdiet pretium. Sed sit amet enim quam. In hac habitasse platea dictumst.",
+                "Suspendisse sed fringilla arcu. Morbi dui mauris, elementum pharetra cursus in, mattis id urna. Mauris fringilla tristique risus sed eleifend. Nam in elit tortor. Nullam ante velit, commodo ut euismod ut, tempor a sapien. Sed id feugiat massa. Pellentesque rhoncus sit amet magna vel lobortis. Cras et mauris orci. Suspendisse sollicitudin ultrices accumsan. Nunc odio est, iaculis non pulvinar sed, pretium eget orci. Pellentesque sapien mauris, venenatis et nisi eu, lobortis lacinia quam. Morbi nulla libero, vehicula vel libero eget, cursus aliquet felis.",
+                "Aenean tristique sit amet metus eu convallis. Donec nisi ipsum, consectetur ac lacus pulvinar, auctor volutpat velit. Nunc sit amet massa vitae ligula ultrices vehicula. Vivamus rhoncus augue sit amet scelerisque vehicula. Nullam velit massa, laoreet in felis at, pretium mattis ex. Etiam aliquet semper purus, at aliquam elit scelerisque non. Donec nec risus sit amet est sollicitudin gravida. Aenean pulvinar eget elit ut mattis.",
+                "Duis egestas dui ac diam porttitor vulputate. Sed porta nibh vitae lacus feugiat cursus. Cras in quam non massa congue facilisis. Curabitur hendrerit sollicitudin eros et varius. Phasellus convallis nibh ac dolor pharetra mollis. Etiam porta tristique ante quis posuere. Aenean hendrerit lectus quis mi laoreet venenatis. Maecenas nec maximus arcu.",
+                "Aenean aliquam felis tortor, ac cursus eros laoreet vel. Fusce vulputate purus varius consequat accumsan. Nam iaculis erat vitae porttitor pretium. Proin eu sapien eget ante aliquam vulputate laoreet vel sapien. Cras ultrices hendrerit nisl, in iaculis nibh aliquet vel. Sed et sollicitudin risus. Quisque felis mauris, iaculis id dolor id, tincidunt dictum augue. Nam ac feugiat magna. Suspendisse tincidunt et risus sit amet porttitor. Cras at dolor at metus facilisis imperdiet. Etiam ut orci eget velit eleifend aliquet at vitae purus. Aenean eget nisi pellentesque, imperdiet erat non, sodales orci. Aliquam erat volutpat. Morbi odio sapien, maximus non magna ultricies, aliquam vulputate magna."
+            ]
         },
         {
             "id": "article-id-2",
             "title": "This is A Title 2",
+            "pubDate": "12-01-2019",
             "synopsis": "A short, but descriptive, synopsis of the article",
-            "contentLocation": "./writer/linkToContent"
+            "content": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem risus, volutpat nec fermentum aliquam, luctus nec ligula. Cras pretium vulputate ornare. In a rhoncus odio. Cras nec nulla sapien. Proin blandit orci eu elit imperdiet pretium. Sed sit amet enim quam. In hac habitasse platea dictumst.",
+                "Suspendisse sed fringilla arcu. Morbi dui mauris, elementum pharetra cursus in, mattis id urna. Mauris fringilla tristique risus sed eleifend. Nam in elit tortor. Nullam ante velit, commodo ut euismod ut, tempor a sapien. Sed id feugiat massa. Pellentesque rhoncus sit amet magna vel lobortis. Cras et mauris orci. Suspendisse sollicitudin ultrices accumsan. Nunc odio est, iaculis non pulvinar sed, pretium eget orci. Pellentesque sapien mauris, venenatis et nisi eu, lobortis lacinia quam. Morbi nulla libero, vehicula vel libero eget, cursus aliquet felis.",
+                "Aenean tristique sit amet metus eu convallis. Donec nisi ipsum, consectetur ac lacus pulvinar, auctor volutpat velit. Nunc sit amet massa vitae ligula ultrices vehicula. Vivamus rhoncus augue sit amet scelerisque vehicula. Nullam velit massa, laoreet in felis at, pretium mattis ex. Etiam aliquet semper purus, at aliquam elit scelerisque non. Donec nec risus sit amet est sollicitudin gravida. Aenean pulvinar eget elit ut mattis.",
+                "Duis egestas dui ac diam porttitor vulputate. Sed porta nibh vitae lacus feugiat cursus. Cras in quam non massa congue facilisis. Curabitur hendrerit sollicitudin eros et varius. Phasellus convallis nibh ac dolor pharetra mollis. Etiam porta tristique ante quis posuere. Aenean hendrerit lectus quis mi laoreet venenatis. Maecenas nec maximus arcu.",
+                "Aenean aliquam felis tortor, ac cursus eros laoreet vel. Fusce vulputate purus varius consequat accumsan. Nam iaculis erat vitae porttitor pretium. Proin eu sapien eget ante aliquam vulputate laoreet vel sapien. Cras ultrices hendrerit nisl, in iaculis nibh aliquet vel. Sed et sollicitudin risus. Quisque felis mauris, iaculis id dolor id, tincidunt dictum augue. Nam ac feugiat magna. Suspendisse tincidunt et risus sit amet porttitor. Cras at dolor at metus facilisis imperdiet. Etiam ut orci eget velit eleifend aliquet at vitae purus. Aenean eget nisi pellentesque, imperdiet erat non, sodales orci. Aliquam erat volutpat. Morbi odio sapien, maximus non magna ultricies, aliquam vulputate magna."
+            ]
         },
         {
             "id": "article-id-3",
             "title": "This is A Title 3",
+            "pubDate": "12-01-2019",
             "synopsis": "A short, but descriptive, synopsis of the article",
-            "contentLocation": "./writer/linkToContent"
+            "content": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem risus, volutpat nec fermentum aliquam, luctus nec ligula. Cras pretium vulputate ornare. In a rhoncus odio. Cras nec nulla sapien. Proin blandit orci eu elit imperdiet pretium. Sed sit amet enim quam. In hac habitasse platea dictumst.",
+                "Suspendisse sed fringilla arcu. Morbi dui mauris, elementum pharetra cursus in, mattis id urna. Mauris fringilla tristique risus sed eleifend. Nam in elit tortor. Nullam ante velit, commodo ut euismod ut, tempor a sapien. Sed id feugiat massa. Pellentesque rhoncus sit amet magna vel lobortis. Cras et mauris orci. Suspendisse sollicitudin ultrices accumsan. Nunc odio est, iaculis non pulvinar sed, pretium eget orci. Pellentesque sapien mauris, venenatis et nisi eu, lobortis lacinia quam. Morbi nulla libero, vehicula vel libero eget, cursus aliquet felis.",
+                "Aenean tristique sit amet metus eu convallis. Donec nisi ipsum, consectetur ac lacus pulvinar, auctor volutpat velit. Nunc sit amet massa vitae ligula ultrices vehicula. Vivamus rhoncus augue sit amet scelerisque vehicula. Nullam velit massa, laoreet in felis at, pretium mattis ex. Etiam aliquet semper purus, at aliquam elit scelerisque non. Donec nec risus sit amet est sollicitudin gravida. Aenean pulvinar eget elit ut mattis.",
+                "Duis egestas dui ac diam porttitor vulputate. Sed porta nibh vitae lacus feugiat cursus. Cras in quam non massa congue facilisis. Curabitur hendrerit sollicitudin eros et varius. Phasellus convallis nibh ac dolor pharetra mollis. Etiam porta tristique ante quis posuere. Aenean hendrerit lectus quis mi laoreet venenatis. Maecenas nec maximus arcu.",
+                "Aenean aliquam felis tortor, ac cursus eros laoreet vel. Fusce vulputate purus varius consequat accumsan. Nam iaculis erat vitae porttitor pretium. Proin eu sapien eget ante aliquam vulputate laoreet vel sapien. Cras ultrices hendrerit nisl, in iaculis nibh aliquet vel. Sed et sollicitudin risus. Quisque felis mauris, iaculis id dolor id, tincidunt dictum augue. Nam ac feugiat magna. Suspendisse tincidunt et risus sit amet porttitor. Cras at dolor at metus facilisis imperdiet. Etiam ut orci eget velit eleifend aliquet at vitae purus. Aenean eget nisi pellentesque, imperdiet erat non, sodales orci. Aliquam erat volutpat. Morbi odio sapien, maximus non magna ultricies, aliquam vulputate magna."
+            ]
         }
     ]
 }

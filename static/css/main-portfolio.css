@@ -14,11 +14,8 @@ body {
     font-family: 'Quicksand';
     letter-spacing: 2px;
 }
-.flex {
-    display: flex;
-}
 .hidden {
-    display: none;
+    display: none !important;
 }
 .clickable {
     cursor: pointer;
@@ -191,11 +188,50 @@ body {
 .about {
     font-size: 2em;
 }
+.essay-container {
+    justify-content: center;
+}
+.essay-card {
+    background: #363636;
+    color: lightgray;
+    width: 75%;
+    height: 100%;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.essay-header {
+    text-align: center;
+}
+.pub-date {
+    margin: 5px;
+}
+.essay-content {
+    margin: 0 auto;
+    width: 90%;
+}
+.essay-card > .delineation-line {
+    margin: 0 auto;
+    height: 2px;
+    width: 75%;
+    background: linear-gradient(to right, #990091, #9900FA);
+}
+@media (min-width: 700px) {
+    .flex {
+        display: flex;
+    }
+}
 @media (max-width: 700px) {
+    .main-container {
+        display: flex;
+        justify-content: center;
+        overflow-x: hidden;
+    }
     .menu-row-1 {
         flex-direction: column;
     }
     .menu-item {
+        border: 2px solid transparent;
         text-align: center;
     }
     .card-container {
@@ -205,7 +241,16 @@ body {
         width: 100%;
         margin: 10px;
     }
+    .writer-card {
+        width: 100%;
+    }
+    .about-container > div {
+        display: flex;
+    }
     .about-img {
         height: 60px;
+    }
+    .essay-card {
+        width: 90%;
     }
 }

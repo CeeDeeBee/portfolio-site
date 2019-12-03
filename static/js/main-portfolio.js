@@ -22,9 +22,37 @@ $(document).ready(function() {
     $('.writer').click(function() {
         openPage('writer');
     });
-    $('.writer-container').on('click', '.writer-card-title', function() {
-        //Open the page affiliated with the writer card
-        window.open($(this).data('content'), '_blank');
+    $('.writer-container').on('click', '.writer-card', function() {
+        let essayId = $(this).data('essayid');
+        //Display the essay
+        $.getJSON('/static/data.json', function(data) {
+            let writerPageData = data.writer;
+            //Select elements
+            let essayCard = $('.essay-card');
+            let essayHeader = essayCard.find('.essay-header');
+            let essayTitle = essayHeader.find('.title');
+            let essayPubDate = essayHeader.find('.pub-date');
+            let essayContent = essayCard.find('.essay-content');
+            //Assign new content
+            for (let i = 0; i < writerPageData.length; i ++) {
+                console.log(writerPageData[i].id);
+                console.log(essayId);
+                if (writerPageData[i].id === essayId) {
+                    console.log('test');
+                    essayTitle.text(writerPageData[i].title);
+                    essayPubDate.text(writerPageData[i].pubDate);
+                    for (let j = 0; j < writerPageData[i].content.length; j ++) {
+                        essayContent.append($('<p></p>').text(writerPageData[i].content[j]));
+                    }
+                }
+            }
+        }).then(function() {
+            $('.name').data('page', 'essay');
+            $('.menu-div').hide('slow');
+            $('.writer-container').fadeOut('slow');
+            $('.main-container').css('justify-content', 'flex-start');
+            $('.essay-container').fadeIn('slow').css('display', 'flex').removeClass('hidden');
+        });
     });
     $('.name').click(function() {
         //When name is clicked open about page if current page is main or open main page if current page is not main
@@ -32,8 +60,8 @@ $(document).ready(function() {
         if (data != 'main') {
             //Hide current content 
             $('.' + data + '-container').fadeOut('slow', function() {
-                $('.menu-div').show('slow').removeClass('collapse');
                 $('.main-container').css('justify-content', 'center');
+                $('.menu-div').show(350).removeClass('collapse');
             });
             //Show main page
             $('.menu-item').addClass('clickable');
@@ -127,12 +155,13 @@ function writerPageInit() {
             let writerPageData = data.writer;
             let writerContainer = $('.writer-container');
             let writerCardTemplate = $('#writer-card-template');
+            let writerCard = writerCardTemplate.find('.writer-card');
             let h1 = writerCardTemplate.find('h1');
             let p = writerCardTemplate.find('p');
 
             for (let i = 0; i < writerPageData.length; i ++) {
-                h1.text(writerPageData[i].title)
-                h1.attr('data-content', writerPageData[i].contentLocation);
+                h1.text(writerPageData[i].title);
+                writerCard.attr('data-essayid', writerPageData[i].id);
                 p.text(writerPageData[i].synopsis);
 
                 writerContainer.append(writerCardTemplate.html());
@@ -148,7 +177,7 @@ function openPage(page) {
     /*$('.menu-div').not('.' + page + '-div').addClass('collapse').hide('slow');*/
     $('.menu-div').not('.' + page + '-div').hide('slow', function() {
         $('.' + page + '-div').addClass('translate');
-        $('.' + page + '-container').fadeIn('slow').css('display', 'flex');
+        $('.' + page + '-container').fadeIn('slow').css('display', 'flex').removeClass('hidden');
         $('.main-container').css('justify-content', 'flex-end');
     }).addClass('collapse');
     $('.name').addClass('clickable');

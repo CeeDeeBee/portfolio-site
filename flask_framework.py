@@ -20,6 +20,11 @@ def index():
 @auth.login_required
 def classic():
     return render_template('classic.html')
-    
+'''
+@app.route('/writer')
+@auth.login_required
+def writer():
+    return render_template('essays.html')
+    '''
 if __name__ == '__main__':
     app.run(debug=True) #debug=True
