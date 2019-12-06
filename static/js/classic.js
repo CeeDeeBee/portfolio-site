@@ -72,10 +72,12 @@ $(document).ready(function() {
     if ($(document).width() < 700) {
         mobile = true;
         $(document).click(function() { 
+            console.log('test');
             $('.forceKbInput').focus();
-            console.log($(window).height());
+            setTimeout(function() {
+                $('body').height(window.visualViewport.height);
+            }, 500);
         });
-        $("meta").attr('height', window.innerHeight);
     }
     cursorInterval = bootSequence();
     initDir();
@@ -303,6 +305,10 @@ $(document).ready(function() {
 	//Listen for keypresses
 	$(document).on('keydown', function(e) {
 		if (booted) {
+            if (mobile) {
+                console.log(window.visualViewport.height);
+                $("meta").attr('height', window.visualViewport.height);
+            }
 			if (e.keyCode == 8) {
 				//Delete last charcter if backspace is pushed
 				$('.currentInput').html($('.currentInput').html().slice(0, -1));

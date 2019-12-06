@@ -13,3 +13,6 @@ passlib = "*"
 
 [requires]
 python_version = "3.6.8"
+
+[scripts]
+portfolio = "python flask_framework.py"

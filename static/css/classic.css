@@ -54,6 +54,9 @@ html, body {
 .dirNumFiles {
   float: right;
 }
+pre.helpDiv {
+  white-space: pre-wrap;
+}
 @media (max-width: 700px) {
   #osTitle {
     font-size: .3em;
