@@ -11,8 +11,9 @@ auth = HTTPBasicAuth()
 def verify_password(username, password):
     return sha256_crypt.verify(password, '$5$rounds=535000$WIAPJULaZXoJdA5k$QaMDS1JUXtjg7gZALu2zBs5qqiHvn7CeXAfWL/fW1YC')
 
-@app.route('/test-portfolio')
-@auth.login_required
+# @app.route('/test-portfolio')
+# @auth.login_required
+@app.route('/')
 def index():
     return render_template('main-portfolio.html')
 
