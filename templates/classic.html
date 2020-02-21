@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics 
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YMFPFYBERQ"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
 
-			gtag('config', 'G-YMFPFYBERQ');
-		</script> -->
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158815956-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
-		<title>CBarn.es Classic</title>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/classic.css') }}">
-	</head>
-	<body>
-		<div id='osTitle' class='flex'>
-			<pre id='cbarnesOsStr'></pre>
-		</div>
-		<div id='bootText'></div>
-		<div id='cursor'></div>
-		<div id='shell'>
-			<pre id='osInfo'></pre>
-			<input class='forceKbInput' type='text' placeholder="test">
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="{{ url_for('static', filename='js/classic.js') }}"></script>
-	</body>
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-158815956-1');
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>CBarn.es Classic</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/classic.css') }}">
+</head>
+
+<body>
+	<div id='osTitle' class='flex'>
+		<pre id='cbarnesOsStr'></pre>
+	</div>
+	<div id='bootText'></div>
+	<div id='cursor'></div>
+	<div id='shell'>
+		<pre id='osInfo'></pre>
+		<input class='forceKbInput' type='text' placeholder="test">
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='js/classic.js') }}"></script>
+</body>
+
 </html>
