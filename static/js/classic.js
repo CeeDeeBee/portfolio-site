@@ -38,7 +38,7 @@ Enter "help" To List Commands`
 
 const descriptions = `Commands:
 BORING - Go to the boring site.
-CD [Directory] - Change to specifiec directory.
+CD [Directory] - Change to specific directory.
 CD [..] - Change to parent directory.
 DIR [FileName] - Display contents of specified directory. Defaults to current directory.
 HELP - Print this dialogue.
@@ -68,13 +68,13 @@ const directories = {
 var booted = false;
 let mobile = false;
 //On DOM load
-$(document).ready(function() {
+$(document).ready(function () {
     if ($(document).width() < 700) {
         mobile = true;
-        $(document).click(function() { 
+        $(document).click(function () {
             console.log('test');
             $('.forceKbInput').focus();
-            setTimeout(function() {
+            setTimeout(function () {
                 $('body').height(window.visualViewport.height);
             }, 500);
         });
@@ -84,8 +84,8 @@ $(document).ready(function() {
     let pathText = 'A:\\';
     let pathArray = [];
     let currentDirectory = directories;
-	const commands = {
-        'reboot': function() {
+    const commands = {
+        'reboot': function () {
             booted = false;
             $(document.body).append($('#cursor').empty());
             clearInterval(cursorInterval);
@@ -95,7 +95,7 @@ $(document).ready(function() {
             $('#cbarnesOsStr').css('display', 'block');
             cursorInterval = bootSequence();
         },
-        'help': async function() {
+        'help': async function () {
             $('.forceKbInput').before($('<pre></pre>').addClass('line helpDiv'));
             for (let chr in descriptions) {
                 $('.helpDiv').last().append(descriptions[chr]);
@@ -104,10 +104,10 @@ $(document).ready(function() {
             }
             newLine();
         },
-        'boring': function() {
+        'boring': function () {
             location.href = '/test-portfolio';
         },
-        'dir': async function(commandProps) {
+        'dir': async function (commandProps) {
             let dirToList;
             let dirPathText;
             if (commandProps.length > 0) {
@@ -117,7 +117,7 @@ $(document).ready(function() {
                 pathArray.pop();
                 if (dirToList && dirToList['type'] === '<DIR>') {
                     dirToList = dirToList['content'];
-                    dirPathText = pathText + commandProps[0] + '\\'; 
+                    dirPathText = pathText + commandProps[0] + '\\';
                 } else {
                     printStr('File not found');
                     return;
@@ -152,7 +152,7 @@ $(document).ready(function() {
                 }
                 textItem = item.toUpperCase();
                 //Add item name
-                for (let chr = 0; chr < textItem.length; chr ++) {
+                for (let chr = 0; chr < textItem.length; chr++) {
                     if (mobile) {
                         $('.dirNameSpan').last().append(textItem[chr]);
                     } else {
@@ -163,13 +163,13 @@ $(document).ready(function() {
                 }
                 if (!mobile) {
                     //Add spaces between item name and type
-                    for (let i = 0; i < ((longestItem + 1) - item.length); i ++) {
+                    for (let i = 0; i < ((longestItem + 1) - item.length); i++) {
                         $('.dirList').last().append('&nbsp;');
                         await sleep(0.25);
                     }
                 }
                 //Add item type
-                for (let i = 0; i < dirToList[item]['type'].length; i ++) {
+                for (let i = 0; i < dirToList[item]['type'].length; i++) {
                     if (mobile) {
                         $('.dirTypeSpan').last().append(dirToList[item]['type'][i]);
                     } else {
@@ -179,17 +179,17 @@ $(document).ready(function() {
                 }
                 $('.dirList').last().append('<br>');
                 scrollToBottom();
-                dirSize ++;
+                dirSize++;
                 await sleep(100);
             }
             if (!mobile) {
                 //Add spaces for file(s) statement
-                for (let i = 0; i < longestItem - 1; i ++) {
+                for (let i = 0; i < longestItem - 1; i++) {
                     $('.dirList').last().append('&nbsp;');
                     scrollToBottom();
                     await sleep(0.25);
                 }
-            }  
+            }
             //Print file(s) statement
             let dirSizeStatement = dirSize + ' File(s)';
             if (mobile) {
@@ -207,7 +207,7 @@ $(document).ready(function() {
             $('.dirList').last().append('<br><br>');
             newLine();
         },
-        'cd': async function(commandProps) {
+        'cd': async function (commandProps) {
             if (commandProps[0]) {
                 if (commandProps[0] === '..') {
                     if (pathArray.length > 0) {
@@ -235,7 +235,7 @@ $(document).ready(function() {
                 printStr(pathText);
             }
         },
-        'type': async function(commandProps) {
+        'type': async function (commandProps) {
             if (commandProps[0]) {
                 if (pathArray.length > 0) {
                     pathArray.push('content', commandProps[0]);
@@ -247,9 +247,9 @@ $(document).ready(function() {
                     //If printing a maker description
                     if (pathArray.includes('maker')) {
                         let description = newDir['description'];
-                        printStr(description, makeNewLine = false).then(function() {
+                        printStr(description, makeNewLine = false).then(function () {
                             let tools = newDir['tools'];
-                            printStr(tools, makeNewLine = false).then(function() {
+                            printStr(tools, makeNewLine = false).then(function () {
                                 if (newDir['github']) {
                                     let github = 'Github: ' + newDir['github'];
                                     printStr(github);
@@ -258,13 +258,13 @@ $(document).ready(function() {
                                 }
                             });
                         });
-                    } 
+                    }
                     //If printing essay
                     else if (pathArray.includes('writer')) {
                         let content = newDir['content'];
                         await printStr(newDir['title'], false);
                         await printStr(newDir['pubDate'], false);
-                        for (let i = 0; i < content.length; i ++) {
+                        for (let i = 0; i < content.length; i++) {
                             let makeNewLine = false;
                             if (i + 1 === content.length) {
                                 makeNewLine = true;
@@ -280,21 +280,21 @@ $(document).ready(function() {
                     else if (commandProps[0] === 'about') {
                         console.log(newDir);
                         let description = newDir['content']['description'];
-                        printStr(description, makeNewLine = false).then(function() {
+                        printStr(description, makeNewLine = false).then(function () {
                             let resume = 'Resume: https://cbarn.es/static/' + newDir['content']['resume'];
-                            printStr(resume, makeNewLine = false).then(async function() {
+                            printStr(resume, makeNewLine = false).then(async function () {
                                 for (let item in newDir['content']['social']) {
-                                    let socialTxt = item[0].toUpperCase() + item.slice(1    ) + ': ' + newDir['content']['social'][item];
+                                    let socialTxt = item[0].toUpperCase() + item.slice(1) + ': ' + newDir['content']['social'][item];
                                     await printStr(socialTxt, makeNewline = false);
                                 }
                                 newLine();
                             });
                         });
-                    } 
+                    }
                 } else {
                     printStr('File not found');
                 }
-                for (let i = 0; i < 2; i ++) {
+                for (let i = 0; i < 2; i++) {
                     pathArray.pop();
                 }
             } else {
@@ -302,31 +302,31 @@ $(document).ready(function() {
             }
         }
     };
-	//Listen for keypresses
-	$(document).on('keydown', function(e) {
-		if (booted) {
+    //Listen for keypresses
+    $(document).on('keydown', function (e) {
+        if (booted) {
             if (mobile) {
                 console.log(window.visualViewport.height);
                 $("meta").attr('height', window.visualViewport.height);
             }
-			if (e.keyCode == 8) {
-				//Delete last charcter if backspace is pushed
-				$('.currentInput').html($('.currentInput').html().slice(0, -1));
-			} else if (e.keyCode == 13) {
+            if (e.keyCode == 8) {
+                //Delete last charcter if backspace is pushed
+                $('.currentInput').html($('.currentInput').html().slice(0, -1));
+            } else if (e.keyCode == 13) {
                 //If enter is pushed
                 let command = $('.currentInput').html().toLowerCase().split(' ');
                 let baseCommand = command.shift();
-				if (commands.hasOwnProperty(baseCommand)) {
-					//If a command is entered
-					commands[baseCommand](command);
-				} else {
+                if (commands.hasOwnProperty(baseCommand)) {
+                    //If a command is entered
+                    commands[baseCommand](command);
+                } else {
                     commandNotFound();
                 }
-			} else if (e.keyCode != 16) {
-				$('.currentInput').text($('.currentInput').text() + e.key);
-			}
-		}
-	});
+            } else if (e.keyCode != 16) {
+                $('.currentInput').text($('.currentInput').text() + e.key);
+            }
+        }
+    });
 });
 
 /**
@@ -341,7 +341,7 @@ function sleep(ms) {
  */
 function cursor() {
     var cursorDisplayed = false;
-    var cursorInterval = setInterval(function() {
+    var cursorInterval = setInterval(function () {
         if (cursorDisplayed) {
             $('#cursor').empty();
             cursorDisplayed = false;
@@ -360,20 +360,20 @@ function cursor() {
 async function bootSequence() {
     //Print ASCII art
     for (let chr in cbarnesOsStr) {
-		$('#cbarnesOsStr').append(cbarnesOsStr[chr]);
-		await sleep(0.25);
-	}
-	//Print booting notification
+        $('#cbarnesOsStr').append(cbarnesOsStr[chr]);
+        await sleep(0.25);
+    }
+    //Print booting notification
     const bootTextStr = 'Booting cbarn.es...';
     for (let chr in bootTextStr) {
-		$('#bootText').append(bootTextStr[chr]);
-		await sleep(0.25);
+        $('#bootText').append(bootTextStr[chr]);
+        await sleep(0.25);
     }
     cursorInterval = cursor();
     await sleep(3000);
     $('#cursor').hide();
     //Clear boot screen
-	$('#bootText').empty().css('display', 'none');
+    $('#bootText').empty().css('display', 'none');
     $('#cbarnesOsStr').empty().css('display', 'none');
     //Setup terminal interface
     for (let chr in osInfo1) {
@@ -387,25 +387,25 @@ async function bootSequence() {
     }
     $('.forceKbInput').before($('<div></div>').addClass('line'));
     $('.line').append($('<div></div>').html('A>').addClass('pointer currentPointer'));
-	$('.line').append($('<div></div>').addClass('input currentInput'));
+    $('.line').append($('<div></div>').addClass('input currentInput'));
     $('.line').append($('#cursor').show());
     booted = true;
-    
+
     return cursorInterval;
 }
 /**
  * Makes new line in terminal
  */
 function newLine() {
-	//Make new pointer div
-	$('.forceKbInput').before($('<div></div>').addClass('line'));
-	//Remove current classes from old pointer and input
-	$('.currentPointer').removeClass('currentPointer');
-	$('.currentInput').removeClass('currentInput');
-	//Create new pointer and input divs
-	$('.line').last().append($('<div></div>').html('A>').addClass('pointer currentPointer'));
-	$('.line').last().append($('<div></div>').addClass('input currentInput'));
-	//Move cursor into new line div
+    //Make new pointer div
+    $('.forceKbInput').before($('<div></div>').addClass('line'));
+    //Remove current classes from old pointer and input
+    $('.currentPointer').removeClass('currentPointer');
+    $('.currentInput').removeClass('currentInput');
+    //Create new pointer and input divs
+    $('.line').last().append($('<div></div>').html('A>').addClass('pointer currentPointer'));
+    $('.line').last().append($('<div></div>').addClass('input currentInput'));
+    //Move cursor into new line div
     $('.line').last().append($('#cursor'));
     scrollToBottom();
 }
@@ -423,7 +423,7 @@ function scrollToBottom() {
 async function commandNotFound() {
     $('.forceKbInput').before($('<div></div>').addClass('line notFoundDiv'));
     for (let chr in 'Bad command or file name') {
-        $('.notFoundDiv').last().append('Bad command or file name'[chr]);
+        $('.notFoundDiv').last().append('Bad command or file name' [chr]);
         await sleep(0.25);
     }
     $('.notFoundDiv').last().append('<br><br>');
@@ -450,18 +450,18 @@ async function printStr(str, makeNewLine = true, scroll = true) {
  * Initialize Directories
  */
 function initDir() {
-    $.getJSON('/static/data.json', function(data) {
+    $.getJSON('/static/data.json', function (data) {
         //Maker directory
-        for (let i = 0; i < data['makerCards'].length; i ++) {
-            directories['content']['maker']['content'][data['makerCards'][i]['id']] = { 
-                'type': 'TXT', 
+        for (let i = 0; i < data['makerCards'].length; i++) {
+            directories['content']['maker']['content'][data['makerCards'][i]['id']] = {
+                'type': 'TXT',
                 'description': data['makerCards'][i]['description'],
                 'tools': data['makerCards'][i]['tools'],
                 'github': data['makerCards'][i]['github']
             };
         }
         //Writer directory
-        for (let i = 0; i < data['writer'].length; i ++) {
+        for (let i = 0; i < data['writer'].length; i++) {
             directories['content']['writer']['content'][data['writer'][i]['id']] = {
                 'type': 'TXT',
                 'title': data['writer'][i]['title'],
@@ -476,7 +476,7 @@ function initDir() {
             'resume': data['about']['resume'],
             'social': {}
         }
-        for (let i = 0; i < data['about']['socialLinks'].length; i ++) {
+        for (let i = 0; i < data['about']['socialLinks'].length; i++) {
             directories['content']['about']['content']['social'][data['about']['socialLinks'][i]['type']] = data['about']['socialLinks'][i]['link'];
         }
     });
@@ -492,7 +492,7 @@ function getNestedFile(pathArray) {
         for (item in pathArray) {
             try {
                 file = file[pathArray[item]];
-            } catch(error) {
+            } catch (error) {
                 return undefined;
             }
         }

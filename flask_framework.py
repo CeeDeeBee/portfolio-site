@@ -18,7 +18,7 @@ def index():
     return render_template('main-portfolio.html')
 
 @app.route('/classic')
-@auth.login_required
+# @auth.login_required
 def classic():
     return render_template('classic.html')
 '''
