@@ -1,6 +1,5 @@
 {
-    "makerCards": [
-        {
+    "makerCards": [{
             "id": "cbarn-es-classic",
             "title": "Cbarn.es Classic",
             "site": "./classic",
@@ -65,10 +64,10 @@
         }
     ],
     "about": {
-        "description": "I make things. Preferably with code, occasionally with words. Currently a Senior in Economics at Michigan State University.",
+        "picture": "beachProfile.jpeg",
+        "description": "I make things. Preferably with code, occasionally with words. Currently studying Web Development at Lambda School.",
         "resume": "resume.pdf",
-        "socialLinks": [
-            {
+        "socialLinks": [{
                 "type": "twitter",
                 "link": "https://twitter.com/colin_barnes",
                 "img": "twitterIcon.png"
@@ -85,8 +84,7 @@
             }
         ]
     },
-    "writer": [
-        {
+    "writer": [{
             "id": "article-id",
             "title": "This is A Title",
             "pubDate": "12-01-2019",

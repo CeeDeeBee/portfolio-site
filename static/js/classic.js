@@ -359,11 +359,10 @@ function cursor() {
  */
 async function bootSequence() {
     //Print ASCII art
-    /*
     for (let chr in cbarnesOsStr) {
 		$('#cbarnesOsStr').append(cbarnesOsStr[chr]);
 		await sleep(0.25);
-	}*/
+	}
 	//Print booting notification
     const bootTextStr = 'Booting cbarn.es...';
     for (let chr in bootTextStr) {
@@ -371,7 +370,7 @@ async function bootSequence() {
 		await sleep(0.25);
     }
     cursorInterval = cursor();
-    //await sleep(3000);
+    await sleep(3000);
     $('#cursor').hide();
     //Clear boot screen
 	$('#bootText').empty().css('display', 'none');

@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics 
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMFPFYBERQ"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -11,90 +12,95 @@
             gtag('config', 'G-YMFPFYBERQ');
         </script>
 -->
-	    <!-- Required meta tags -->
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main-portfolio.css') }}">
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main-portfolio.css') }}">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 
-	    <title>CBarn.es</title>
-    </head>           
-    <body>
-        <!-- Main Container -->
-        <div class="main-container flex">
-            <div class="name-container flex">
-                <h1 class="name" data-page='main'>Colin Barnes</h1>
-            </div>
-            <div class="menu-container flex">
-                <div class='menu-row-1 flex'>
-                    <div class='maker-div menu-div'>
-                        <h3 class="menu-item maker clickable">Maker</h3>
-                    </div>
-                    <div class='entrepreneur-div menu-div'>
-                        <h3 class="menu-item entrepreneur clickable"><a href='https://twitter.com/AfterbangLLC' target='_blank'>Entrepreneur</a></h3>
-                    </div>
-                    <div class='writer-div menu-div'>
-                        <h3 class="menu-item writer clickable">Writer</h3>
-                    </div>
+    <title>CBarn.es</title>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="main-container flex">
+        <div class="name-container flex">
+            <h1 class="name" data-page='main'>Colin Barnes</h1>
+        </div>
+        <div class="menu-container flex">
+            <div class='menu-row-1 flex'>
+                <div class='maker-div menu-div'>
+                    <h3 class="menu-item maker clickable">Maker</h3>
                 </div>
-                <div class='menu-row-2 flex'>
-                    <div class='about-div menu-div'>
-                        <h3 class='menu-item about clickable'>About</h3>
-                    </div>
+                <div class='entrepreneur-div menu-div'>
+                    <h3 class="menu-item entrepreneur clickable"><a href='https://twitter.com/AfterbangLLC'
+                            target='_blank'>Entrepreneur</a></h3>
+                </div>
+                <div class='writer-div menu-div'>
+                    <h3 class="menu-item writer clickable">Writer</h3>
                 </div>
             </div>
-             <!-- Maker Page Container -->
-            <div class='maker-container card-container flex hidden'>
-                <!-- Maker Card Template-->
-                <div id='maker-card-template' class='hidden'>
-                    <div class='maker-card card'>
-                        <div class="main-content">
-                            <img>
-                            <h1 class='maker-card-title'>Cbarn.es Classic</h1>
-                            <div></div>
-                            <p>An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.</p>
-                            <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using Apache and Flask.</p>
-                        </div>
-                        <p><a></a></p>
-                    </div>
-                </div>
-                <div id='maker-column-1' class='maker-column flex'></div>
-                <div id='maker-column-2' class='maker-column flex'></div>
-                <div id='maker-column-3' class='maker-column flex'></div>
-            </div> 
-            <!-- About Page Container -->
-            <div class='about-container flex hidden'>
-                <p></p>
-                <a></a>
-                <div class='flex'></div>
-                <p>Icons Courtesy of <a href='https://www.alfredocreates.com/' class='icon-link'>Alfredo Hernandez</a></p>
-            </div>
-            <!-- Writer Page Container -->
-            <div class='writer-container card-container flex hidden'>
-                <div id='writer-card-template' class='hidden'>
-                    <div class='writer-card card clickable'>
-                        <h1 class='writer-card-title'>Article Title</h1>
-                        <div></div>
-                        <p>Article Synopsis</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Essay Card Container -->
-            <div class='essay-container flex hidden'>
-                <div class='essay-card card'>
-                    <div class='essay-header'>
-                        <h1 class='title'>The Title</h1>
-                        <div class='pub-date'>02-25-1998</div>
-                    </div>
-                    <div class='delineation-line'></div>
-                    <div class='essay-content'></div>
+            <div class='menu-row-2 flex'>
+                <div class='about-div menu-div'>
+                    <h3 class='menu-item about clickable'>About</h3>
                 </div>
             </div>
         </div>
-        <!-- JS Imports -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="{{ url_for('static', filename='js/main-portfolio.js') }}"></script>
-    </body>
+        <!-- Maker Page Container -->
+        <div class='maker-container card-container flex hidden'>
+            <!-- Maker Card Template-->
+            <div id='maker-card-template' class='hidden'>
+                <div class='maker-card card'>
+                    <div class="main-content">
+                        <img>
+                        <h1 class='maker-card-title'>Cbarn.es Classic</h1>
+                        <div></div>
+                        <p>An implementation of Cbarn.es inspired by the experience one would have using the IBM PC.</p>
+                        <p>Tools: JavaScript, JQuery, HTML, CSS. Hosted on Dreamhost's Cloud Compute Platform using
+                            Apache and Flask.</p>
+                    </div>
+                    <p><a></a></p>
+                </div>
+            </div>
+            <div id='maker-column-1' class='maker-column flex'></div>
+            <div id='maker-column-2' class='maker-column flex'></div>
+            <div id='maker-column-3' class='maker-column flex'></div>
+        </div>
+        <!-- About Page Container -->
+        <div class='about-container flex hidden'>
+            <img alt="Headshot">
+            <p></p>
+            <a></a>
+            <div class='flex'></div>
+            <p>Icons Courtesy of <a href='https://www.alfredocreates.com/' class='icon-link'>Alfredo Hernandez</a></p>
+        </div>
+        <!-- Writer Page Container -->
+        <div class='writer-container card-container flex hidden'>
+            <div id='writer-card-template' class='hidden'>
+                <div class='writer-card card clickable'>
+                    <h1 class='writer-card-title'>Article Title</h1>
+                    <div></div>
+                    <p>Article Synopsis</p>
+                </div>
+            </div>
+        </div>
+        <!-- Essay Card Container -->
+        <div class='essay-container flex hidden'>
+            <div class='essay-card card'>
+                <div class='essay-header'>
+                    <h1 class='title'>The Title</h1>
+                    <div class='pub-date'>02-25-1998</div>
+                </div>
+                <div class='delineation-line'></div>
+                <div class='essay-content'></div>
+            </div>
+        </div>
+    </div>
+    <!-- JS Imports -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main-portfolio.js') }}"></script>
+</body>
+
 </html>
