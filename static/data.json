@@ -9,6 +9,15 @@
             "github": "https://github.com/CeeDeeBee/portfolio-site"
         },
         {
+            "id": "droom-marketing-page",
+            "title": "Droom Marketing Page",
+            "site": "https://ceedeebee.github.io/UI/",
+            "image": "droom-ui.png",
+            "description": "A demo marketing page designed and built over the course of a week during Lambda School.",
+            "tools": "Tools: JavaScript, jQuery, CSS, LESS, Semantic HTML. Hosted using GitHub Pages.",
+            "github": "https://github.com/CeeDeeBee/UI"
+        },
+        {
             "id": "crypto-toolbox",
             "title": "Crypto Toolbox",
             "site": "https://chrome.google.com/webstore/detail/crypto-toolbox/eaiipppjcplaacihfjkhhdafojoodjpp?hl=en-US",
@@ -16,15 +25,6 @@
             "description": "A Google Chrome Extension that allows users to easily track prices of any crypto currency along with tools to track news, portfolio value, and convert between currencies.",
             "tools": "Tools: JavaScript, JQuery, D3.js, Crypto Compare streaming API, HTML, CSS.",
             "github": "https://github.com/CeeDeeBee/Crypto-Converter"
-        },
-        {
-            "id": "land-grant-goods-supplychain-solution",
-            "title": "Land Grant Goods Supplychain Solution",
-            "site": null,
-            "image": "lgg.png",
-            "description": "A blockchain based, supplychain tracking system created as a team with members of Spartan Blockchain Solutions.",
-            "tools": "Tools: Hyperledger, Angular, TypeScript, Docker, Bash, HTML, CSS.",
-            "github": null
         },
         {
             "id": "yield-curve-inversion-watch",
@@ -52,6 +52,15 @@
             "description": "A basic visual simulation of evolution with entities of random, heritable, health values.",
             "tools": "Tools: Python, TKinter, Numpy",
             "github": "https://github.com/CeeDeeBee/evolution-simulation"
+        },
+        {
+            "id": "land-grant-goods-supplychain-solution",
+            "title": "Land Grant Goods Supplychain Solution",
+            "site": null,
+            "image": "lgg.png",
+            "description": "A blockchain based, supplychain tracking system created as a team with members of Spartan Blockchain Solutions.",
+            "tools": "Tools: Hyperledger, Angular, TypeScript, Docker, Bash, HTML, CSS.",
+            "github": null
         },
         {
             "id": "cbarn-es",
