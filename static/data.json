@@ -10,6 +10,15 @@
 			"github": "https://github.com/CeeDeeBee/portfolio-site"
 		},
 		{
+			"id": "schematic-capture",
+			"title": "Schematic Capture",
+			"site": "https://youtu.be/VwY4DYQo_Lg",
+			"image": "schematic-capture.png",
+			"description": "Schematic Capture is a web and iOS application that allows machine technicians and their managers to seamlessly plan and complete repairs.",
+			"tools": "Tools: React, Redux, Cypress, Dropbox API, Node, Express, Knex, PostgreSQL, Heroku, AWS.",
+			"github": "https://github.com/Lambda-School-Labs/schematic-capture-fe"
+		},
+		{
 			"id": "droom-marketing-page",
 			"title": "Droom Marketing Page",
 			"site": "https://ceedeebee.github.io/UI/",
@@ -17,15 +26,6 @@
 			"description": "A demo marketing page designed and built over the course of a week during Lambda School.",
 			"tools": "Tools: JavaScript, jQuery, CSS, LESS, Semantic HTML. Hosted using GitHub Pages.",
 			"github": "https://github.com/CeeDeeBee/UI"
-		},
-		{
-			"id": "book-search",
-			"title": "React/Redux Book Search",
-			"site": "https://react-redux-app.ceedeebee.now.sh/",
-			"image": "book-search.png",
-			"description": "A front-end site build during Lambda School in order to improve abilities with React and Redux.",
-			"tools": "Tools: React, Redux, Axios, SASS, Open Library API. Deployed using ZEIT.",
-			"github": "https://github.com/CeeDeeBee/React-Redux-App"
 		},
 		{
 			"id": "crypto-toolbox",
@@ -46,13 +46,13 @@
 			"github": "https://github.com/CeeDeeBee/yield-curve-bot-public"
 		},
 		{
-			"id": "potus-approval",
-			"title": "POTUS Approval",
-			"site": "https://twitter.com/potusapproval",
-			"image": "potusapproval.png",
-			"description": "A Twitter Bot that tweets the United States President's net approval rating along with the precent change from the previous tweet.",
-			"tools": "Tools: Python, Tweepy, FiveThirtyEight's presidential approval data. Hosted on Dreamhost's Cloud Compute Platform.",
-			"github": null
+			"id": "book-search",
+			"title": "React/Redux Book Search",
+			"site": "https://react-redux-app.ceedeebee.now.sh/",
+			"image": "book-search.png",
+			"description": "A front-end site build during Lambda School in order to improve abilities with React and Redux.",
+			"tools": "Tools: React, Redux, Axios, SASS, Open Library API. Deployed using ZEIT.",
+			"github": "https://github.com/CeeDeeBee/React-Redux-App"
 		},
 		{
 			"id": "evolution-simulation",
@@ -62,6 +62,15 @@
 			"description": "A basic visual simulation of evolution with entities of random, heritable, health values.",
 			"tools": "Tools: Python, TKinter, Numpy",
 			"github": "https://github.com/CeeDeeBee/evolution-simulation"
+		},
+		{
+			"id": "potus-approval",
+			"title": "POTUS Approval",
+			"site": "https://twitter.com/potusapproval",
+			"image": "potusapproval.png",
+			"description": "A Twitter Bot that tweets the United States President's net approval rating along with the precent change from the previous tweet.",
+			"tools": "Tools: Python, Tweepy, FiveThirtyEight's presidential approval data. Hosted on Dreamhost's Cloud Compute Platform.",
+			"github": null
 		},
 		{
 			"id": "land-grant-goods-supplychain-solution",

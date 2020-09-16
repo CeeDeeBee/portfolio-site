@@ -8,7 +8,7 @@ $(document).ready(function () {
 		//Open maker page when maker button is clicked
 		openPage("maker");
 	});
-	$(".maker-container").on("click", ".main-content", function () {
+	$(".maker-container").on("click", ".maker-card-title-container", function () {
 		//Open the site affiliated with the maker card
 		let site = $(this).data("site");
 		if (site) {
@@ -91,6 +91,9 @@ function makerPageInit() {
 			let makerCardTemplate = $("#maker-card-template");
 			let makerCardDiv = makerCardTemplate.find(".maker-card");
 			let mainContent = makerCardTemplate.find(".main-content");
+			let makerCardTitleContainer = makerCardTemplate.find(
+				".maker-card-title-container"
+			);
 			let img = makerCardTemplate.find("img");
 			let h1 = makerCardTemplate.find("h1");
 			let p = makerCardTemplate.find("p");
@@ -99,11 +102,11 @@ function makerPageInit() {
 			for (let i = 0; i < makerPageData.length; i++) {
 				img.prop("src", "/static/images/" + makerPageData[i].image);
 				if (makerPageData[i].site) {
-					makerCardDiv.addClass("clickable");
-					mainContent.attr("data-site", makerPageData[i].site);
+					makerCardTitleContainer.attr("data-site", makerPageData[i].site);
+					makerCardTitleContainer.addClass("clickable");
 				} else {
-					makerCardDiv.removeClass("clickable");
-					mainContent.removeAttr("data-site");
+					makerCardTitleContainer.removeClass("clickable");
+					makerCardTitleContainer.removeAttr("data-site");
 				}
 				h1.text(makerPageData[i].title);
 				$(p[0]).text(makerPageData[i].description);
